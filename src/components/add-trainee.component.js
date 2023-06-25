@@ -129,125 +129,148 @@ export default class AddTrainee extends Component {
 
   render() {
     return (
-      <div className="submit-form">
-        {this.state.submitted ? (
-          <div>
-            <h4>You submitted successfully!</h4>
-            <button className="btn btn-success" onClick={this.newTutorial}>
-              Add
-            </button>
-          </div>
-        ) : (
-          <div>
-            <div className="form-group">
-              <label htmlFor="salutation">Salutation</label>
-              <input
-                type="text"
-                className="form-control"
-                id="salutation"
-                required
-                value={this.state.salutation}
-                onChange={this.onChangeSalutation}
-                name="salutation"
-              />
+      <div className="container">
+        <div className="submit-form">
+          {this.state.submitted ? (
+            <div>
+              <h4 style={{ color: "white" }}>You submitted successfully!</h4>
+              <button className="btn btn-success" onClick={this.newTutorial}>
+                Add
+              </button>
             </div>
+          ) : (
+            <div className="form-container">
+              <div className="form-column">
+                <div className="form-group">
+                  <label htmlFor="salutation" style={{ color: "white" }}>
+                    Salutation
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="salutation"
+                    required
+                    value={this.state.salutation}
+                    onChange={this.onChangeSalutation}
+                    name="salutation"
+                  />
+                </div>
 
-            <div className="form-group">
-              <label htmlFor="firstName">FirstName</label>
-              <input
-                type="text"
-                className="form-control"
-                id="firstName"
-                required
-                value={this.state.firstName}
-                onChange={this.onChangeFirstName}
-                name="firstName"
-              />
+                <div className="form-group">
+                  <label htmlFor="firstName" style={{ color: "white" }}>
+                    FirstName
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="firstName"
+                    required
+                    value={this.state.firstName}
+                    onChange={this.onChangeFirstName}
+                    name="firstName"
+                  />
+                </div>
+              </div>
+              <div className="form-column">
+                <div className="form-group">
+                  <label htmlFor="middleName" style={{ color: "white" }}>
+                    MiddleName
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="middleName"
+                    required
+                    value={this.state.middleName}
+                    onChange={this.onChangeMiddleName}
+                    name="middleName"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="surName" style={{ color: "white" }}>
+                    SurName
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="surName"
+                    required
+                    value={this.state.surName}
+                    onChange={this.onChangeSurName}
+                    name="surName"
+                  />
+                </div>
+              </div>
+              <div className="form-column">
+                <div className="form-group">
+                  <label htmlFor="dateOfBirth" style={{ color: "white" }}>
+                    DateOfBirth
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="dateOfBirth"
+                    required
+                    value={this.state.dateOfBirth}
+                    onChange={this.onChangeDateOfBirth}
+                    name="dateOfBirth"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="gender" style={{ color: "white" }}>
+                    Gender
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="gender"
+                    required
+                    value={this.state.gender}
+                    onChange={this.onChangeGender}
+                    name="gender"
+                  />
+                </div>
+              </div>
+              <div className="form-column">
+                <div className="form-group">
+                  <label htmlFor="maritalStatus" style={{ color: "white" }}>
+                    MaritalStatus
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="maritalStatus"
+                    required
+                    value={this.state.maritalStatus}
+                    onChange={this.onChangeMaritalStatus}
+                    name="maritalStatus"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="casteCategory" style={{ color: "white" }}>
+                    CasteCategory
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="casteCategory"
+                    required
+                    value={this.state.casteCategory}
+                    onChange={this.onChangeCasteCategory}
+                    name="casteCategory"
+                  />
+                </div>
+              </div>
+
+              <button onClick={this.saveTutorial} className="btn btn-success">
+                Submit
+              </button>
             </div>
-
-            <div className="form-group">
-              <label htmlFor="middleName">MiddleName</label>
-              <input
-                type="text"
-                className="form-control"
-                id="middleName"
-                required
-                value={this.state.middleName}
-                onChange={this.onChangeMiddleName}
-                name="middleName"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="surName">SurName</label>
-              <input
-                type="text"
-                className="form-control"
-                id="surName"
-                required
-                value={this.state.surName}
-                onChange={this.onChangeSurName}
-                name="surName"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="dateOfBirth">DateOfBirth</label>
-              <input
-                type="text"
-                className="form-control"
-                id="dateOfBirth"
-                required
-                value={this.state.dateOfBirth}
-                onChange={this.onChangeDateOfBirth}
-                name="dateOfBirth"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="gender">Gender</label>
-              <input
-                type="text"
-                className="form-control"
-                id="gender"
-                required
-                value={this.state.gender}
-                onChange={this.onChangeGender}
-                name="gender"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="maritalStatus">MaritalStatus</label>
-              <input
-                type="text"
-                className="form-control"
-                id="maritalStatus"
-                required
-                value={this.state.maritalStatus}
-                onChange={this.onChangeMaritalStatus}
-                name="maritalStatus"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="casteCategory">CasteCategory</label>
-              <input
-                type="text"
-                className="form-control"
-                id="casteCategory"
-                required
-                value={this.state.casteCategory}
-                onChange={this.onChangeCasteCategory}
-                name="casteCategory"
-              />
-            </div>
-
-            <button onClick={this.saveTutorial} className="btn btn-success">
-              Submit
-            </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   }

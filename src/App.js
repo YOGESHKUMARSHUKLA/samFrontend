@@ -17,6 +17,8 @@ import AddTutorial from "./components/add-tutorial.component";
 import AddTrainee from "./components/add-trainee.component";
 import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
+import TraineePage from "./components/Trainee";
+import TraineeDashboard from "./components/Dashboard"
 
 // import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
@@ -53,20 +55,21 @@ const App = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to={"/tutorials"} className="navbar-brand">
+
+      <nav className="navbar navbar-expand navbar-dark " style={{ backgroundColor: '#4a0505' }}>
+        <Link to={"/home"} className="navbar-brand" style={{ color: 'white' }}>
           SAMS
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
+            <Link to={"/home"} className="nav-link" style={{ color: 'white' }}>
               Home
             </Link>
           </li>
 
           {showModeratorBoard && (
             <li className="nav-item">
-              <Link to={"/mod"} className="nav-link">
+              <Link to={"/mod"} className="nav-link" style={{ color: 'white' }}>
                 Moderator Board
               </Link>
             </li>
@@ -74,7 +77,7 @@ const App = () => {
 
           {showAdminBoard && (
             <li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
+              <Link to={"/admin"} className="nav-link" style={{ color: 'white' }}>
                 Admin Board
               </Link>
             </li>
@@ -82,27 +85,19 @@ const App = () => {
 
           {currentUser && (
             <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
+              <Link to={"/user"} className="nav-link" style={{ color: 'white' }}>
                 User
               </Link>
             </li>
           )}
           <div className="navbar-nav mr-auto">
+            
             <li className="nav-item">
-              <Link to={"/tutorials"} className="nav-link">
-                Tutorials
+              <Link to={"/viewTrainee"} className="nav-link" style={{ color: 'white' }}>
+                Trainee
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
-                Add
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/addTrainee"} className="nav-link">
-                AddTrainee
-              </Link>
-            </li>
+           
           </div>
         </div>
 
@@ -114,7 +109,7 @@ const App = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={logOut}>
+              <a href="/login" className="nav-link" onClick={logOut}  style={{ color: 'white' }}>
                 LogOut
               </a>
             </li>
@@ -122,35 +117,33 @@ const App = () => {
         ) : (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
+              <Link to={"/login"} className="nav-link" style={{ color: 'white' }}>
                 Login
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to={"/register"} className="nav-link">
+              <Link to={"/register"} className="nav-link" style={{ color: 'white' }}>
                 Sign Up
               </Link>
             </li>
           </div>
         )}
       </nav>
-
+<div className="background"></div>
       <div className="container mt-3">
         <Routes>
           {/* <Route exact path={"/"} element={<Home />} /> */}
-          <Route exact path={"/home"} element={<TutorialsList />} />
+          <Route exact path={"/home"} element={<TraineeDashboard />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route path="/user" element={<BoardUser />} />
           <Route path="/mod" element={<BoardModerator />} />
           <Route path="/admin" element={<BoardAdmin />} />
-          <Route path="/" element={<TutorialsList />} />
-          <Route path="/tutorials" element={<TutorialsList />} />
-          <Route path="/add" element={<AddTutorial />} />
-          <Route path="/tutorials/:id" element={<Tutorial />} />
+          <Route path="/" element={<TraineePage />} />
           <Route path="/addTrainee" element={<AddTrainee />} />
+          <Route path="/viewTrainee" element={<TraineePage />} />
         </Routes>
       </div>
 
