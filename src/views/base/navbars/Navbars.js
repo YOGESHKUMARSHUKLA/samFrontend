@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import {
   CCard,
   CCardBody,
@@ -17,9 +17,9 @@ import {
   CNavbarToggler,
   CNavLink,
   CDropdown,
-  CButton,
-} from '@coreui/react'
-import { DocsLink } from 'src/components'
+  CButton
+} from "@coreui/react"
+import { DocsLink } from "src/components"
 
 const CNavbars = () => {
   const [visible, setVisible] = useState(false)
@@ -44,7 +44,11 @@ const CNavbars = () => {
               </CNavbarNav>
               <CNavbarNav className="ms-auto">
                 <CForm className="d-flex">
-                  <CFormInput className="me-sm-2" placeholder="Search" size="sm" />
+                  <CFormInput
+                    className="me-sm-2"
+                    placeholder="Search"
+                    size="sm"
+                  />
                   <CButton color="light" className="my-2 my-sm-0" type="submit">
                     Search
                   </CButton>
@@ -149,7 +153,11 @@ const CNavbars = () => {
           <CNavbar light color="light">
             <CForm className="d-flex">
               <CFormInput className="me-sm-2" placeholder="Search" size="sm" />
-              <CButton color="outline-success" className="my-2 my-sm-0" type="submit">
+              <CButton
+                color="outline-success"
+                className="my-2 my-sm-0"
+                type="submit"
+              >
                 Search
               </CButton>
             </CForm>

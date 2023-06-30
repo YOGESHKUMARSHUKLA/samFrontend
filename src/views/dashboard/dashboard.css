@@ -1,15 +1,15 @@
-.tableContainer{
-    /* background-color: #1E1F25; */
-    border-radius: 20px;
-    height: 544px;
-    width:1244px;
-    padding: 0 10px 10px 10px;
-    overflow: scroll;
-    /* maxHeight: "30rem"; */
-    /* overflow: auto, */
+.tableContainer {
+  /* background-color: #1E1F25; */
+  border-radius: 20px;
+  height: 544px;
+  width: 1244px;
+  padding: 0 10px 10px 10px;
+  overflow: scroll;
+  /* maxHeight: "30rem"; */
+  /* overflow: auto, */
 }
-Table thead{
-    position: sticky;
-    top: 0px;
-    margin: 0 0 0 0;
+Table thead {
+  position: sticky;
+  top: 0px;
+  margin: 0 0 0 0;
 }

@@ -7,6 +7,8 @@ import avatar1 from "src/assets/images/avatars/1.jpg"
 import CIcon from "@coreui/icons-react"
 import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
+import Placement from "./Placement"
+import { Navigate, Route, Routes } from "react-router-dom"
 import {
   CFormLabel,
   CFormTextarea,
@@ -147,7 +149,13 @@ const StudentProfile = () => {
           </CFormLabel>
           <div>
             <CButton type="submit" className="mb-3">
-              Placement
+              <Link
+                to={"/Placement"}
+                className="nav-link"
+                style={{ color: "white" }}
+              >
+                Placement
+              </Link>
             </CButton>
             {"   "}
             <CButton type="submit" className="mb-3">
@@ -156,6 +164,12 @@ const StudentProfile = () => {
           </div>
           {/* </div> */}
         </div>
+        <Routes>
+          <Route
+            path="/Placement"
+            element={<Navigate to="Placement" replace />}
+          />
+        </Routes>
       </>
     )
   }

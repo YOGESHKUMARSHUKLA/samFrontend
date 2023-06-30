@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {
   CCard,
   CCardBody,
@@ -10,10 +10,10 @@ import {
   CWidgetStatsB,
   CWidgetStatsC,
   CWidgetStatsE,
-  CWidgetStatsF,
-} from '@coreui/react'
-import { getStyle } from '@coreui/utils'
-import CIcon from '@coreui/icons-react'
+  CWidgetStatsF
+} from "@coreui/react"
+import { getStyle } from "@coreui/utils"
+import CIcon from "@coreui/icons-react"
 import {
   cilArrowRight,
   cilBasket,
@@ -26,13 +26,13 @@ import {
   cilSpeech,
   cilSpeedometer,
   cilUser,
-  cilUserFollow,
-} from '@coreui/icons'
-import { CChartBar, CChartLine } from '@coreui/react-chartjs'
-import { DocsExample } from 'src/components'
+  cilUserFollow
+} from "@coreui/icons"
+import { CChartBar, CChartLine } from "@coreui/react-chartjs"
+import { DocsExample } from "src/components"
 
-import WidgetsBrand from './WidgetsBrand'
-import WidgetsDropdown from './WidgetsDropdown'
+import WidgetsBrand from "./WidgetsBrand"
+import WidgetsDropdown from "./WidgetsDropdown"
 
 const Widgets = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
@@ -49,7 +49,7 @@ const Widgets = () => {
             <CCol xs={12} sm={6} lg={3}>
               <CWidgetStatsB
                 className="mb-4"
-                progress={{ color: 'success', value: 89.9 }}
+                progress={{ color: "success", value: 89.9 }}
                 text="Lorem ipsum dolor sit amet enim."
                 title="Widget title"
                 value="89.9%"
@@ -60,7 +60,7 @@ const Widgets = () => {
                 className="mb-4"
                 value="12.124"
                 title="Widget title"
-                progress={{ color: 'info', value: 89.9 }}
+                progress={{ color: "info", value: 89.9 }}
                 text="Lorem ipsum dolor sit amet enim."
               />
             </CCol>
@@ -69,7 +69,7 @@ const Widgets = () => {
                 className="mb-4"
                 value="$98.111,00"
                 title="Widget title"
-                progress={{ color: 'warning', value: 89.9 }}
+                progress={{ color: "warning", value: 89.9 }}
                 text="Lorem ipsum dolor sit amet enim."
               />
             </CCol>
@@ -78,7 +78,7 @@ const Widgets = () => {
                 className="mb-4"
                 value="2 TB"
                 title="Widget title"
-                progress={{ color: 'primary', value: 89.9 }}
+                progress={{ color: "primary", value: 89.9 }}
                 text="Lorem ipsum dolor sit amet enim."
               />
             </CCol>
@@ -139,29 +139,29 @@ const Widgets = () => {
                 chart={
                   <CChartBar
                     className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
+                    style={{ height: "40px", width: "80px" }}
                     data={{
                       labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M"
                       ],
                       datasets: [
                         {
-                          backgroundColor: getStyle('--cui-danger'),
-                          borderColor: 'transparent',
+                          backgroundColor: getStyle("--cui-danger"),
+                          borderColor: "transparent",
                           borderWidth: 1,
                           data: [
                             random(40, 100),
@@ -178,26 +178,26 @@ const Widgets = () => {
                             random(40, 100),
                             random(40, 100),
                             random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
+                            random(40, 100)
+                          ]
+                        }
+                      ]
                     }}
                     options={{
                       maintainAspectRatio: false,
                       plugins: {
                         legend: {
-                          display: false,
-                        },
+                          display: false
+                        }
                       },
                       scales: {
                         x: {
-                          display: false,
+                          display: false
                         },
                         y: {
-                          display: false,
-                        },
-                      },
+                          display: false
+                        }
+                      }
                     }}
                   />
                 }
@@ -211,29 +211,29 @@ const Widgets = () => {
                 chart={
                   <CChartBar
                     className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
+                    style={{ height: "40px", width: "80px" }}
                     data={{
                       labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M"
                       ],
                       datasets: [
                         {
-                          backgroundColor: getStyle('--cui-primary'),
-                          borderColor: 'transparent',
+                          backgroundColor: getStyle("--cui-primary"),
+                          borderColor: "transparent",
                           borderWidth: 1,
                           data: [
                             random(40, 100),
@@ -250,26 +250,26 @@ const Widgets = () => {
                             random(40, 100),
                             random(40, 100),
                             random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
+                            random(40, 100)
+                          ]
+                        }
+                      ]
                     }}
                     options={{
                       maintainAspectRatio: false,
                       plugins: {
                         legend: {
-                          display: false,
-                        },
+                          display: false
+                        }
                       },
                       scales: {
                         x: {
-                          display: false,
+                          display: false
                         },
                         y: {
-                          display: false,
-                        },
-                      },
+                          display: false
+                        }
+                      }
                     }}
                   />
                 }
@@ -283,29 +283,29 @@ const Widgets = () => {
                 chart={
                   <CChartBar
                     className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
+                    style={{ height: "40px", width: "80px" }}
                     data={{
                       labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M"
                       ],
                       datasets: [
                         {
-                          backgroundColor: getStyle('--cui-success'),
-                          borderColor: 'transparent',
+                          backgroundColor: getStyle("--cui-success"),
+                          borderColor: "transparent",
                           borderWidth: 1,
                           data: [
                             random(40, 100),
@@ -322,26 +322,26 @@ const Widgets = () => {
                             random(40, 100),
                             random(40, 100),
                             random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
+                            random(40, 100)
+                          ]
+                        }
+                      ]
                     }}
                     options={{
                       maintainAspectRatio: false,
                       plugins: {
                         legend: {
-                          display: false,
-                        },
+                          display: false
+                        }
                       },
                       scales: {
                         x: {
-                          display: false,
+                          display: false
                         },
                         y: {
-                          display: false,
-                        },
-                      },
+                          display: false
+                        }
+                      }
                     }}
                   />
                 }
@@ -355,29 +355,29 @@ const Widgets = () => {
                 chart={
                   <CChartLine
                     className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
+                    style={{ height: "40px", width: "80px" }}
                     data={{
                       labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M"
                       ],
                       datasets: [
                         {
-                          backgroundColor: 'transparent',
-                          borderColor: getStyle('--cui-danger'),
+                          backgroundColor: "transparent",
+                          borderColor: getStyle("--cui-danger"),
                           borderWidth: 2,
                           data: [
                             random(40, 100),
@@ -394,34 +394,34 @@ const Widgets = () => {
                             random(40, 100),
                             random(40, 100),
                             random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
+                            random(40, 100)
+                          ]
+                        }
+                      ]
                     }}
                     options={{
                       maintainAspectRatio: false,
                       elements: {
                         line: {
-                          tension: 0.4,
+                          tension: 0.4
                         },
                         point: {
-                          radius: 0,
-                        },
+                          radius: 0
+                        }
                       },
                       plugins: {
                         legend: {
-                          display: false,
-                        },
+                          display: false
+                        }
                       },
                       scales: {
                         x: {
-                          display: false,
+                          display: false
                         },
                         y: {
-                          display: false,
-                        },
-                      },
+                          display: false
+                        }
+                      }
                     }}
                   />
                 }
@@ -435,29 +435,29 @@ const Widgets = () => {
                 chart={
                   <CChartLine
                     className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
+                    style={{ height: "40px", width: "80px" }}
                     data={{
                       labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M"
                       ],
                       datasets: [
                         {
-                          backgroundColor: 'transparent',
-                          borderColor: getStyle('--cui-success'),
+                          backgroundColor: "transparent",
+                          borderColor: getStyle("--cui-success"),
                           borderWidth: 2,
                           data: [
                             random(40, 100),
@@ -474,34 +474,34 @@ const Widgets = () => {
                             random(40, 100),
                             random(40, 100),
                             random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
+                            random(40, 100)
+                          ]
+                        }
+                      ]
                     }}
                     options={{
                       maintainAspectRatio: false,
                       elements: {
                         line: {
-                          tension: 0.4,
+                          tension: 0.4
                         },
                         point: {
-                          radius: 0,
-                        },
+                          radius: 0
+                        }
                       },
                       plugins: {
                         legend: {
-                          display: false,
-                        },
+                          display: false
+                        }
                       },
                       scales: {
                         x: {
-                          display: false,
+                          display: false
                         },
                         y: {
-                          display: false,
-                        },
-                      },
+                          display: false
+                        }
+                      }
                     }}
                   />
                 }
@@ -515,29 +515,29 @@ const Widgets = () => {
                 chart={
                   <CChartLine
                     className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
+                    style={{ height: "40px", width: "80px" }}
                     data={{
                       labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M",
+                        "T",
+                        "W",
+                        "T",
+                        "F",
+                        "S",
+                        "S",
+                        "M"
                       ],
                       datasets: [
                         {
-                          backgroundColor: 'transparent',
-                          borderColor: getStyle('--cui-info'),
+                          backgroundColor: "transparent",
+                          borderColor: getStyle("--cui-info"),
                           borderWidth: 2,
                           data: [
                             random(40, 100),
@@ -554,34 +554,34 @@ const Widgets = () => {
                             random(40, 100),
                             random(40, 100),
                             random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
+                            random(40, 100)
+                          ]
+                        }
+                      ]
                     }}
                     options={{
                       maintainAspectRatio: false,
                       elements: {
                         line: {
-                          tension: 0.4,
+                          tension: 0.4
                         },
                         point: {
-                          radius: 0,
-                        },
+                          radius: 0
+                        }
                       },
                       plugins: {
                         legend: {
-                          display: false,
-                        },
+                          display: false
+                        }
                       },
                       scales: {
                         x: {
-                          display: false,
+                          display: false
                         },
                         y: {
-                          display: false,
-                        },
-                      },
+                          display: false
+                        }
+                      }
                     }}
                   />
                 }
@@ -649,7 +649,11 @@ const Widgets = () => {
                     target="_blank"
                   >
                     View more
-                    <CIcon icon={cilArrowRight} className="float-end" width={16} />
+                    <CIcon
+                      icon={cilArrowRight}
+                      className="float-end"
+                      width={16}
+                    />
                   </CLink>
                 }
               />
@@ -669,7 +673,11 @@ const Widgets = () => {
                     target="_blank"
                   >
                     View more
-                    <CIcon icon={cilArrowRight} className="float-end" width={16} />
+                    <CIcon
+                      icon={cilArrowRight}
+                      className="float-end"
+                      width={16}
+                    />
                   </CLink>
                 }
               />
@@ -689,7 +697,11 @@ const Widgets = () => {
                     target="_blank"
                   >
                     View more
-                    <CIcon icon={cilArrowRight} className="float-end" width={16} />
+                    <CIcon
+                      icon={cilArrowRight}
+                      className="float-end"
+                      width={16}
+                    />
                   </CLink>
                 }
               />
@@ -709,7 +721,11 @@ const Widgets = () => {
                     target="_blank"
                   >
                     View more
-                    <CIcon icon={cilArrowRight} className="float-end" width={16} />
+                    <CIcon
+                      icon={cilArrowRight}
+                      className="float-end"
+                      width={16}
+                    />
                   </CLink>
                 }
               />
@@ -772,31 +788,31 @@ const Widgets = () => {
               icon={<CIcon icon={cilPeople} height={36} />}
               value="87.500"
               title="Visitors"
-              progress={{ color: 'info', value: 75 }}
+              progress={{ color: "info", value: 75 }}
             />
             <CWidgetStatsC
               icon={<CIcon icon={cilUserFollow} height={36} />}
               value="385"
               title="New Clients"
-              progress={{ color: 'success', value: 75 }}
+              progress={{ color: "success", value: 75 }}
             />
             <CWidgetStatsC
               icon={<CIcon icon={cilBasket} height={36} />}
               value="1238"
               title="Products sold"
-              progress={{ color: 'warning', value: 75 }}
+              progress={{ color: "warning", value: 75 }}
             />
             <CWidgetStatsC
               icon={<CIcon icon={cilChartPie} height={36} />}
               value="28%"
               title="Returning Visitors"
-              progress={{ color: 'primary', value: 75 }}
+              progress={{ color: "primary", value: 75 }}
             />
             <CWidgetStatsC
               icon={<CIcon icon={cilSpeedometer} height={36} />}
               value="5:34:11"
               title="Avg. Time"
-              progress={{ color: 'danger', value: 75 }}
+              progress={{ color: "danger", value: 75 }}
             />
           </CCardGroup>
         </DocsExample>
@@ -807,7 +823,7 @@ const Widgets = () => {
                 icon={<CIcon icon={cilPeople} height={36} />}
                 value="87.500"
                 title="Visitors"
-                progress={{ color: 'info', value: 75 }}
+                progress={{ color: "info", value: 75 }}
                 className="mb-4"
               />
             </CCol>
@@ -816,7 +832,7 @@ const Widgets = () => {
                 icon={<CIcon icon={cilUserFollow} height={36} />}
                 value="385"
                 title="New Clients"
-                progress={{ color: 'success', value: 75 }}
+                progress={{ color: "success", value: 75 }}
                 className="mb-4"
               />
             </CCol>
@@ -825,7 +841,7 @@ const Widgets = () => {
                 icon={<CIcon icon={cilBasket} height={36} />}
                 value="1238"
                 title="Products sold"
-                progress={{ color: 'warning', value: 75 }}
+                progress={{ color: "warning", value: 75 }}
                 className="mb-4"
               />
             </CCol>
@@ -834,7 +850,7 @@ const Widgets = () => {
                 icon={<CIcon icon={cilChartPie} height={36} />}
                 value="28%"
                 title="Returning Visitors"
-                progress={{ color: 'primary', value: 75 }}
+                progress={{ color: "primary", value: 75 }}
                 className="mb-4"
               />
             </CCol>
@@ -843,7 +859,7 @@ const Widgets = () => {
                 icon={<CIcon icon={cilSpeedometer} height={36} />}
                 value="5:34:11"
                 title="Avg. Time"
-                progress={{ color: 'danger', value: 75 }}
+                progress={{ color: "danger", value: 75 }}
                 className="mb-4"
               />
             </CCol>
@@ -852,7 +868,7 @@ const Widgets = () => {
                 icon={<CIcon icon={cilSpeech} height={36} />}
                 value="972"
                 title="comments"
-                progress={{ color: 'info', value: 75 }}
+                progress={{ color: "info", value: 75 }}
                 className="mb-4"
               />
             </CCol>

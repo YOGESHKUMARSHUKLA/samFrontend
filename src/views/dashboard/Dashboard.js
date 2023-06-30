@@ -2,6 +2,7 @@ import React from "react"
 import "./dashboard.css"
 import TraineeDataService from "../../services/trainee.service"
 import Profile from "./Profile"
+import Placement from "./Placement"
 import {
   CAvatar,
   CButton,
@@ -702,7 +703,8 @@ const Dashboard = () => {
           </CCard>
         </CCol>
       </CRow>
-      <Profile />
+      {/* <Profile />
+      <Placement /> */}
     </>
   )
 }

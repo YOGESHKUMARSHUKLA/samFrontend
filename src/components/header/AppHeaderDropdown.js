@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {
   CAvatar,
   CBadge,
@@ -7,8 +7,8 @@ import {
   CDropdownHeader,
   CDropdownItem,
   CDropdownMenu,
-  CDropdownToggle,
-} from '@coreui/react'
+  CDropdownToggle
+} from "@coreui/react"
 import {
   cilBell,
   cilCreditCard,
@@ -18,11 +18,11 @@ import {
   cilLockLocked,
   cilSettings,
   cilTask,
-  cilUser,
-} from '@coreui/icons'
-import CIcon from '@coreui/icons-react'
+  cilUser
+} from "@coreui/icons"
+import CIcon from "@coreui/icons-react"
 
-import avatar8 from './../../assets/images/avatars/8.jpg'
+import avatar8 from "./../../assets/images/avatars/8.jpg"
 
 const AppHeaderDropdown = () => {
   return (
@@ -31,7 +31,9 @@ const AppHeaderDropdown = () => {
         <CAvatar src={avatar8} size="md" />
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownHeader className="bg-light fw-semibold py-2">Account</CDropdownHeader>
+        <CDropdownHeader className="bg-light fw-semibold py-2">
+          Account
+        </CDropdownHeader>
         <CDropdownItem href="#">
           <CIcon icon={cilBell} className="me-2" />
           Updates
@@ -60,7 +62,9 @@ const AppHeaderDropdown = () => {
             42
           </CBadge>
         </CDropdownItem>
-        <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>
+        <CDropdownHeader className="bg-light fw-semibold py-2">
+          Settings
+        </CDropdownHeader>
         <CDropdownItem href="#">
           <CIcon icon={cilUser} className="me-2" />
           Profile

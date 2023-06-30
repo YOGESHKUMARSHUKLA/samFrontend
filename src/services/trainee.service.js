@@ -1,7 +1,7 @@
-import http from '../http-common'
+import http from "../http-common"
 class TraineeDataService {
   getAll() {
-    return http.get('/trainee-details/trainees/')
+    return http.get("/trainee-details/trainees/")
   }
 
   get(id) {
@@ -9,7 +9,7 @@ class TraineeDataService {
   }
 
   create(data) {
-    return http.post('/trainee-details/trainees', data)
+    return http.post("/trainee-details/trainees", data)
   }
 
   update(id, data) {

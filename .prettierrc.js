@@ -6,9 +6,9 @@
 //   tabWidth: 2
 // };
 
- module.exports = {
-  "semi": false,
-  "singleQuote": false,
-  "arrowParens": "avoid",
-  "trailingComma": "none"
-};
+module.exports = {
+  semi: false,
+  singleQuote: false,
+  arrowParens: "avoid",
+  trailingComma: "none"
+}
