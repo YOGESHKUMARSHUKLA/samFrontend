@@ -5,7 +5,7 @@ class TraineeDataService {
   }
 
   get(id) {
-    return http.get(`//trainee-details/trainees/${id}`)
+    return http.get(`/trainee-details/trainees/${id}`)
   }
 
   create(data) {

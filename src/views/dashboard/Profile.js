@@ -8,6 +8,7 @@ import CIcon from "@coreui/icons-react"
 import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
 import Placement from "./Placement"
+import Training from "./Training"
 import { Navigate, Route, Routes } from "react-router-dom"
 import {
   CFormLabel,
@@ -159,16 +160,20 @@ const StudentProfile = () => {
             </CButton>
             {"   "}
             <CButton type="submit" className="mb-3">
-              Training
+              <Link
+                to={"/Training"}
+                className="nav-link"
+                style={{ color: "white" }}
+              >
+                Training
+              </Link>
             </CButton>
           </div>
           {/* </div> */}
         </div>
         <Routes>
-          <Route
-            path="/Placement"
-            element={<Navigate to="Placement" replace />}
-          />
+          <Route path="/Placement" element={<Placement />} />
+          <Route path="/Training" element={<Training />} />
         </Routes>
       </>
     )

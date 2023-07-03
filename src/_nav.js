@@ -65,13 +65,13 @@ const _nav = [
       {
         component: CNavItem,
         name: "View",
-        to: "/StudentProfile",
+        to: "/StudentProfile/*",
         icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
       },
       {
         component: CNavItem,
         name: "Add",
-        to: "/base/breadcrumbs",
+        to: "/AddTrainee",
         icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
       },
       {
@@ -91,19 +91,19 @@ const _nav = [
       {
         component: CNavItem,
         name: "View",
-        to: "/base/accordion",
+        to: "/dashboard",
         icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
       },
       {
         component: CNavItem,
         name: "Add",
-        to: "/base/breadcrumbs",
+        to: "/dashboard",
         icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
       },
       {
         component: CNavItem,
         name: "Edit",
-        to: "/base/cards",
+        to: "/dashboard",
         icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
       }
     ]
@@ -117,19 +117,19 @@ const _nav = [
       {
         component: CNavItem,
         name: "View",
-        to: "/base/accordion",
+        to: "/dashboard",
         icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
       },
       {
         component: CNavItem,
         name: "Add",
-        to: "/base/breadcrumbs",
+        to: "/dashboard",
         icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
       },
       {
         component: CNavItem,
         name: "Edit",
-        to: "/base/cards",
+        to: "/dashboard",
         icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
       }
     ]
@@ -143,19 +143,19 @@ const _nav = [
       {
         component: CNavItem,
         name: "View",
-        to: "/base/accordion",
+        to: "/dashboard",
         icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
       },
       {
         component: CNavItem,
         name: "Add",
-        to: "/base/breadcrumbs",
+        to: "/dashboard",
         icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
       },
       {
         component: CNavItem,
         name: "Edit",
-        to: "/base/cards",
+        to: "/dashboard",
         icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
       }
     ]
@@ -181,7 +181,7 @@ const _nav = [
   {
     component: CNavItem,
     name: "About PBMA",
-    href: "https://coreui.io/react/docs/templates/installation/",
+    href: "https://www.linkedin.com/company/technical-training-institute-of-the-poona-blind-men-s-association/?originalSubdomain=in",
     icon: <CIcon icon={cilInfo} customClassName="nav-icon" />
   }
 ]

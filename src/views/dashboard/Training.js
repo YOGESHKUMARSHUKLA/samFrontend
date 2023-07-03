@@ -1,13 +1,13 @@
 import React from "react"
 import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap"
-import TraineeDataService from "../../services/placement.service"
+import TrainingDataService from "../../services/training.service"
 import { useEffect } from "react"
 import { useState } from "react"
 import avatar1 from "src/assets/images/avatars/1.jpg"
 import CIcon from "@coreui/icons-react"
-import AddPlacement from "./AddPlacement"
 import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
+import AddTraining from "./AddTraining"
 import { Navigate, Route, Routes } from "react-router-dom"
 import {
   CFormLabel,
@@ -38,8 +38,8 @@ import {
   CTableHeaderCell,
   CTableRow
 } from "@coreui/react"
-const StudentProfile = () => {
-  const [trainees, setTrainees] = useState([])
+const TrainingProfile = () => {
+  const [trainings, setTrainings] = useState([])
 
   useEffect(() => {
     fetchData()
@@ -47,8 +47,8 @@ const StudentProfile = () => {
 
   const fetchData = async () => {
     try {
-      const response = TraineeDataService.getAll()
-      setTrainees((await response).data)
+      const response = TrainingDataService.getAll()
+      setTrainings((await response).data)
     } catch (error) {
       console.error(error)
     }
@@ -77,129 +77,152 @@ const StudentProfile = () => {
       <>
         <div className="mb-3">
           <CFormLabel htmlFor="exampleFormControlInput1">
-            {"Placement Id : "}
+            {"Training Id : "}
 
             <CFormInput
               readOnly
               type="email"
               id="exampleFormControlInput1"
               placeholder="name@example.com"
-              value={item.placement.placementId}
+              value={item.training.trainingId}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"EmploymentMethod : "}
+            {"Course Name : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.employmentMethod}
+              value={item.training.courseDetails.courseName}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"EmployerName : "}
+            {"Sector : "}
+
+            <CFormInput readOnly value={item.training.courseDetails.sector} />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"Batch Start Date : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.employerName}
+              value={item.training.courseDetails.batchStartDate}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"NameOfPointPersonFromEmployer : "}
+            {"Batch End Date : "}
 
             <CFormInput
               readOnly
-              value={
-                item.placement.placementDetails.nameOfPointPersonFromEmployer
-              }
+              value={item.training.courseDetails.batchEndDate}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"PlacementSector : "}
+            {"Industry Visit Completed : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.placementSector}
+              value={item.training.trainingProcess.industryVisitCompleted}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"ContactNumberOfPointPerson : "}
+            {"OJT Completed : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.contactNumberOfPointPerson}
+              value={item.training.trainingProcess.ojtCompleted}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Placement Status : "}
+            {"Training Status : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.placementStatus}
+              value={item.training.trainingOutput.trainingStatus}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"JobRole : "}
+            {"Attendance Percentage : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.jobRole}
+              value={item.training.trainingOutput.attendencePercentage}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Employer EmailId : "}
+            {"Assessment Conducted : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.employerEmailId}
+              value={item.training.trainingOutput.assessmentConducted}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Location Of Employment : "}
+            {"Certified : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.locationOfEmployment}
+              value={item.training.trainingOutput.certified}
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Annual CTC : "}
+            {"Date Of Course Passing : "}
 
             <CFormInput
               readOnly
-              value={item.placement.placementDetails.annualCtc}
+              value={item.training.trainingOutput.dateOfCoursePassing}
             />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"Date Of Issuance Of Certificate : "}
+
+            <CFormInput
+              readOnly
+              value={item.training.trainingOutput.dateOfIssuanceOfCertificate}
+            />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"Certificate Name Or Award : "}
+
+            <CFormInput
+              readOnly
+              value={item.training.trainingOutput.certificateNameOrAward}
+            />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"Grade : "}
+
+            <CFormInput readOnly value={item.training.trainingOutput.grade} />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"Comments : "}
+
+            <CFormInput readOnly value={item.training.comments} />
           </CFormLabel>
+          {/* </div> */}
           <div>
             <CButton type="submit" className="mb-3">
-              Student
-            </CButton>
-            {"   "}
-            <CButton type="submit" className="mb-3">
-              Training
-            </CButton>
-            {"   "}
-            <CButton type="submit" className="mb-3">
-              Placement Tracking
-            </CButton>{" "}
-            {"   "}
-            <CButton type="submit" className="mb-3">
               <Link
-                to={"/AddPlacement"}
+                to={"/AddTraining"}
                 className="nav-link"
                 style={{ color: "white" }}
               >
-                Add Placement
+                AddTraining
               </Link>
             </CButton>
           </div>
-          {/* </div> */}
         </div>
         <Routes>
-          <Route path="/AddPlacement" element={<AddPlacement />} />
+          <Route path="/AddTraining" element={<AddTraining />} />
         </Routes>
       </>
     )
   }
+  ;<Routes>
+    <Route
+      path="/AddTraining"
+      element={<Navigate to="AddTraining" replace />}
+    />
+  </Routes>
   const renderForm2 = item => {
     return (
       <>
@@ -285,7 +308,7 @@ const StudentProfile = () => {
             </CButton>
             {"   "}
             <CButton type="submit" className="mb-3">
-              Placement Tracking
+              training Tracking
             </CButton>
           </div>
           {/* </div> */}
@@ -300,7 +323,7 @@ const StudentProfile = () => {
         <Col md={8}>
           <Card>
             <CardHeader className="bg-primary text-white">
-              Placement Profile
+              Training Profile
             </CardHeader>
             <CardBody>
               <Row className="mb-4">
@@ -311,8 +334,8 @@ const StudentProfile = () => {
                     size="xl"
                   />
                 </Col>
-                {trainees &&
-                  trainees.map((item, index) => (
+                {trainings &&
+                  trainings.map((item, index) => (
                     // <Col sm={8} key={index}>
                     //   {item.trainee.traineeId == 1
                     //     ? renderNestedFields(item.trainee)
@@ -320,9 +343,7 @@ const StudentProfile = () => {
                     // </Col>
 
                     <CForm key={index}>
-                      {item.placement.traineeId == [1 | 2 | 3]
-                        ? renderForm(item)
-                        : ""}
+                      {item.training.traineeId == 1 ? renderForm(item) : ""}
                       {/* </CForm> */}
                       {/* </Col> */}
                       {/* <Col sm={4}> */}
@@ -340,4 +361,4 @@ const StudentProfile = () => {
   )
 }
 
-export default StudentProfile
+export default TrainingProfile

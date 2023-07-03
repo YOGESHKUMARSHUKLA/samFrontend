@@ -2,7 +2,13 @@ import React from "react"
 
 const Dashboard = React.lazy(() => import("./views/dashboard/Dashboard"))
 const StudentProfile = React.lazy(() => import("./views/dashboard/Profile"))
+const AddTrainee = React.lazy(() => import("./views/dashboard/AddTrainee"))
+
+// const Login = React.lazy(() => import("./views/pages/login/Login"))
+const AddPlacement = React.lazy(() => import("./views/dashboard/AddPlacement"))
 const Placement = React.lazy(() => import("./views/dashboard/Placement"))
+const Training = React.lazy(() => import("./views/dashboard/Training"))
+const AddTraining = React.lazy(() => import("./views/dashboard/AddTraining"))
 const Colors = React.lazy(() => import("./views/theme/colors/Colors"))
 const Typography = React.lazy(() =>
   import("./views/theme/typography/Typography")
@@ -80,6 +86,7 @@ const Widgets = React.lazy(() => import("./views/widgets/Widgets"))
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
+  // { path: "/login", name: "Login", element: Login },
   { path: "/dashboard", name: "Dashboard", element: Dashboard },
   { path: "/theme", name: "Theme", element: Colors, exact: true },
   { path: "/theme/colors", name: "Colors", element: Colors },
@@ -140,8 +147,12 @@ const routes = [
   { path: "/notifications/modals", name: "Modals", element: Modals },
   { path: "/notifications/toasts", name: "Toasts", element: Toasts },
   { path: "/widgets", name: "Widgets", element: Widgets },
-  { path: "/StudentProfile", name: "StudentView", element: StudentProfile },
-  { path: "/Placement", name: "Placement", element: Placement }
+  { path: "/StudentProfile/*", name: "StudentView", element: StudentProfile },
+  { path: "/Placement", name: "Placement", element: Placement },
+  { path: "/AddTrainee", name: "AddTrainee", element: AddTrainee },
+  { path: "/Training", name: "Training", element: Training },
+  { path: "/AddTraining", name: "AddTraining", element: AddTraining },
+  { path: "/AddPlacement", name: "AddPlacement", element: AddPlacement }
 ]
 
 export default routes

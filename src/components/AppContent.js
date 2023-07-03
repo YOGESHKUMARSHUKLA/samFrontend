@@ -24,10 +24,6 @@ const AppContent = () => {
             )
           })}
           <Route path="/" element={<Navigate to="dashboard" replace />} />
-          <Route
-            path="/StudentView"
-            element={<Navigate to="profile" replace />}
-          />
         </Routes>
       </Suspense>
     </CContainer>
