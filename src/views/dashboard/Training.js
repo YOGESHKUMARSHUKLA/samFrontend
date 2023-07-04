@@ -58,7 +58,7 @@ const TrainingProfile = () => {
       console.error(error)
     }
   }
-
+  console.log(employeeId)
   const renderNestedFields = (data, level = 1) => {
     return Object.entries(data).map(([key, value]) => {
       if (typeof value === "object" && value !== null) {

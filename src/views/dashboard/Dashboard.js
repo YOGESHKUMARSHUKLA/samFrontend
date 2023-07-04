@@ -45,7 +45,7 @@ import {
   cifPl,
   cifUs,
   cibTwitter,
-  cilCloudDownload,
+  cilNotes,
   cilPeople,
   cilUser,
   cilUserFemale
@@ -530,7 +530,7 @@ const Dashboard = () => {
                       </CTableHeaderCell>
                       <CTableHeaderCell>Contact Address</CTableHeaderCell>
                       <CTableHeaderCell>Contact Details</CTableHeaderCell>
-                      <CTableHeaderCell>Edit</CTableHeaderCell>
+                      <CTableHeaderCell>View</CTableHeaderCell>
                     </CTableRow>
                   </CTableHead>
                   <CTableBody>
@@ -699,7 +699,7 @@ const Dashboard = () => {
                               state={{ id: item.trainee.traineeId }}
                               className="nav-link"
                             >
-                              <CIcon icon={cilPencil} />
+                              <CIcon icon={cilNotes} />
                             </Link>
 
                             {/* <StudentProfile employeeId={1}>

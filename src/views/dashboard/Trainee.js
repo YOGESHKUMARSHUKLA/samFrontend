@@ -1,14 +1,15 @@
 import React from "react"
 import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap"
-import TraineeDataService from "../../services/placement.service"
+import TraineeDataService from "../../services/trainee.service"
 import { useEffect } from "react"
 import { useState } from "react"
 import avatar1 from "src/assets/images/avatars/1.jpg"
 import CIcon from "@coreui/icons-react"
-import AddPlacement from "./AddPlacement"
 import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
-import { Navigate, Route, Routes } from "react-router-dom"
+import Placement from "./Placement"
+import Training from "./Training"
+import { Navigate, Route, Routes, useRouteMatch } from "react-router-dom"
 import {
   CFormLabel,
   CFormTextarea,
@@ -39,18 +40,33 @@ import {
   CTableRow
 } from "@coreui/react"
 import { useLocation } from "react-router-dom"
-const StudentProfile = () => {
-  const [trainees, setTrainees] = useState([])
+import { useParams } from "react-router-dom"
+const Trainee = () => {
+  // const match = useRouteMatch("/StudentProfile/:employeeId")
+  // const employeeId = match && match.params
+  // const { state } = useLocation()
+  // const { id } = this.state.id
+  // const { employeeId } = useParams()
+  // const { state } = useLocation()
+  // const employeeId = state && state.employeeId
 
-  const location = useLocation()
+  // const params = new URLSearchParams(window.location.search)
+  // console.log(params.has("id") ? params.get("id") : "")
+  //   const location = useLocation()
   // console.log(props, " props")
   // console.log(location, " UseLocation Hook")
   // console.log(location.state.id, " UseLocation Id")
-  const employeeId = location && location.state
+  //   const employeeId = location && location.state
+  // const [employeeId, setEmployeeId] = useState([location && location.state])
+
+  const [trainees, setTrainees] = useState([])
+
+  //   console.log(employeeId)
+  // console.log(params.get("id"))
   useEffect(() => {
     fetchData()
   }, [])
-  console.log(employeeId)
+
   const fetchData = async () => {
     try {
       const response = TraineeDataService.getAll()
@@ -83,125 +99,104 @@ const StudentProfile = () => {
       <>
         <div className="mb-3">
           <CFormLabel htmlFor="exampleFormControlInput1">
-            {"Placement Id : "}
+            {"Name : "}
 
             <CFormInput
               readOnly
               type="email"
               id="exampleFormControlInput1"
               placeholder="name@example.com"
-              value={item.placement.placementId}
+              value={item.trainee.nameOfTrainee}
             />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"EmploymentMethod : "}
+            {"DOB : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.employmentMethod}
-            />
+            <CFormInput readOnly value={item.trainee.dateOfBirth} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"EmployerName : "}
+            {"Gender : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.employerName}
-            />
+            <CFormInput readOnly value={item.trainee.gender} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"NameOfPointPersonFromEmployer : "}
+            {"Marital Status : "}
 
-            <CFormInput
-              readOnly
-              value={
-                item.placement.placementDetails.nameOfPointPersonFromEmployer
-              }
-            />
+            <CFormInput readOnly value={item.trainee.maritalStatus} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"PlacementSector : "}
+            {"Caste Category : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.placementSector}
-            />
+            <CFormInput readOnly value={item.trainee.casteCategory} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"ContactNumberOfPointPerson : "}
+            {"Guardian Type : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.contactNumberOfPointPerson}
-            />
+            <CFormInput readOnly value={item.trainee.guardianType} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Placement Status : "}
+            {"Name of Guardian/Spouse/Parent : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.placementStatus}
-            />
+            <CFormInput readOnly value={item.trainee.nameOfGuardian} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"JobRole : "}
+            {"Family Economic Status : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.jobRole}
-            />
+            <CFormInput readOnly value={item.trainee.familyEconomicStatus} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Employer EmailId : "}
+            {"Source of Household Income : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.employerEmailId}
-            />
+            <CFormInput readOnly value={item.trainee.sourceOfHouseholdIncome} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Location Of Employment : "}
+            {"Trainee Annual Income : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.locationOfEmployment}
-            />
+            <CFormInput readOnly value={item.trainee.traineeAnnualIncome} />
           </CFormLabel>{" "}
+          {/* <div className="mb-3 sm col-xs-offset-2"> */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Annual CTC : "}
+            {"Annual Household Income : "}
 
-            <CFormInput
-              readOnly
-              value={item.placement.placementDetails.annualCtc}
-            />
+            <CFormInput readOnly value={item.trainee.annualHouseholdIncome} />
           </CFormLabel>
           <div>
             <CButton type="submit" className="mb-3">
-              Student
+              <Link
+                to={"/Placement"}
+                className="nav-link"
+                style={{ color: "white" }}
+                // state={{ id: employeeId.id }}
+              >
+                Placement
+              </Link>
             </CButton>
-            {"   "}
-            <CButton type="submit" className="mb-3">
-              Training
-            </CButton>
-            {"   "}
-            <CButton type="submit" className="mb-3">
-              Placement Tracking
-            </CButton>{" "}
             {"   "}
             <CButton type="submit" className="mb-3">
               <Link
-                to={"/AddPlacement"}
+                to={"/Training"}
                 className="nav-link"
                 style={{ color: "white" }}
+                // state={{ id: employeeId.id }}
               >
-                Add Placement
+                Training
               </Link>
             </CButton>
           </div>
           {/* </div> */}
         </div>
         <Routes>
-          <Route path="/AddPlacement" element={<AddPlacement />} />
+          <Route path="/Placement" element={<Placement />} />
+          <Route path="/Training" element={<Training />} />
         </Routes>
       </>
     )
@@ -283,15 +278,11 @@ const StudentProfile = () => {
           </CFormLabel>
           <div>
             <CButton type="submit" className="mb-3">
-              Student
+              Placement
             </CButton>
             {"   "}
             <CButton type="submit" className="mb-3">
               Training
-            </CButton>
-            {"   "}
-            <CButton type="submit" className="mb-3">
-              Placement Tracking
             </CButton>
           </div>
           {/* </div> */}
@@ -299,6 +290,7 @@ const StudentProfile = () => {
       </>
     )
   }
+  // const location = useLocation()
 
   return (
     <Container>
@@ -306,8 +298,26 @@ const StudentProfile = () => {
         <Col md={8}>
           <Card>
             <CardHeader className="bg-primary text-white">
-              Placement Profile
+              Student Profile
             </CardHeader>
+            {/* <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search by title"
+                value={searchTitle}
+                onChange={this.onChangeSearchTitle()}
+              />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  onClick={this.searchTitle()}
+                >
+                  Search
+                </button>
+              </div>
+            </div> */}
             <CardBody>
               <Row className="mb-4">
                 <Col sm={4}>
@@ -326,10 +336,7 @@ const StudentProfile = () => {
                     // </Col>
 
                     <CForm key={index}>
-                      {item.placement.traineeId ==
-                      (employeeId ? employeeId.id : 1)
-                        ? renderForm(item)
-                        : ""}
+                      {item.trainee.traineeId == 1 ? renderForm(item) : ""}
                       {/* </CForm> */}
                       {/* </Col> */}
                       {/* <Col sm={4}> */}
@@ -347,4 +354,4 @@ const StudentProfile = () => {
   )
 }
 
-export default StudentProfile
+export default Trainee

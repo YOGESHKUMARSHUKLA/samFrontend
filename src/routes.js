@@ -3,7 +3,7 @@ import React from "react"
 const Dashboard = React.lazy(() => import("./views/dashboard/Dashboard"))
 const StudentProfile = React.lazy(() => import("./views/dashboard/Profile"))
 const AddTrainee = React.lazy(() => import("./views/dashboard/AddTrainee"))
-
+const Trainee = React.lazy(() => import("./views/dashboard/Trainee"))
 // const Login = React.lazy(() => import("./views/pages/login/Login"))
 const AddPlacement = React.lazy(() => import("./views/dashboard/AddPlacement"))
 const Placement = React.lazy(() => import("./views/dashboard/Placement"))
@@ -152,7 +152,8 @@ const routes = [
   { path: "/AddTrainee", name: "AddTrainee", element: AddTrainee },
   { path: "/Training", name: "Training", element: Training },
   { path: "/AddTraining", name: "AddTraining", element: AddTraining },
-  { path: "/AddPlacement", name: "AddPlacement", element: AddPlacement }
+  { path: "/AddPlacement", name: "AddPlacement", element: AddPlacement },
+  { path: "/Trainee", name: "Trainee", element: Trainee }
 ]
 
 export default routes

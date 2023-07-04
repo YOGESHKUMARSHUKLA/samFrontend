@@ -67,11 +67,7 @@ const StudentProfile = props => {
       currentIndex: -1
     })
   }
-  const onChangeSearchTitle = e => {
-    this.setState({
-      employeeId: e.target.value
-    })
-  }
+
   console.log(employeeId)
   // console.log(params.get("id"))
   useEffect(() => {
@@ -348,7 +344,7 @@ const StudentProfile = props => {
 
                     <CForm key={index}>
                       {item.trainee.traineeId ==
-                      (employeeId ? employeeId.id : 1)
+                      (employeeId != null ? employeeId.id : 1)
                         ? renderForm(item)
                         : ""}
                       {/* </CForm> */}
