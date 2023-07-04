@@ -9,7 +9,7 @@ import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
 import Placement from "./Placement"
 import Training from "./Training"
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes, useRouteMatch } from "react-router-dom"
 import {
   CFormLabel,
   CFormTextarea,
@@ -39,9 +39,41 @@ import {
   CTableHeaderCell,
   CTableRow
 } from "@coreui/react"
-const StudentProfile = () => {
+import { useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
+const StudentProfile = props => {
+  // const match = useRouteMatch("/StudentProfile/:employeeId")
+  // const employeeId = match && match.params
+  // const { state } = useLocation()
+  // const { id } = this.state.id
+  // const { employeeId } = useParams()
+  // const { state } = useLocation()
+  // const employeeId = state && state.employeeId
+
+  // const params = new URLSearchParams(window.location.search)
+  // console.log(params.has("id") ? params.get("id") : "")
+  const location = useLocation()
+  // console.log(props, " props")
+  // console.log(location, " UseLocation Hook")
+  // console.log(location.state.id, " UseLocation Id")
+  const employeeId = location && location.state
+  // const [employeeId, setEmployeeId] = useState([location && location.state])
+
   const [trainees, setTrainees] = useState([])
 
+  const searchTitle = () => {
+    this.setEmployeeId({
+      employeeId: null,
+      currentIndex: -1
+    })
+  }
+  const onChangeSearchTitle = e => {
+    this.setState({
+      employeeId: e.target.value
+    })
+  }
+  console.log(employeeId)
+  // console.log(params.get("id"))
   useEffect(() => {
     fetchData()
   }, [])
@@ -154,6 +186,7 @@ const StudentProfile = () => {
                 to={"/Placement"}
                 className="nav-link"
                 style={{ color: "white" }}
+                state={{ id: employeeId.id }}
               >
                 Placement
               </Link>
@@ -164,6 +197,7 @@ const StudentProfile = () => {
                 to={"/Training"}
                 className="nav-link"
                 style={{ color: "white" }}
+                state={{ id: employeeId.id }}
               >
                 Training
               </Link>
@@ -267,6 +301,7 @@ const StudentProfile = () => {
       </>
     )
   }
+  // const location = useLocation()
 
   return (
     <Container>
@@ -276,6 +311,24 @@ const StudentProfile = () => {
             <CardHeader className="bg-primary text-white">
               Student Profile
             </CardHeader>
+            {/* <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search by title"
+                value={searchTitle}
+                onChange={this.onChangeSearchTitle()}
+              />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  onClick={this.searchTitle()}
+                >
+                  Search
+                </button>
+              </div>
+            </div> */}
             <CardBody>
               <Row className="mb-4">
                 <Col sm={4}>
@@ -294,7 +347,10 @@ const StudentProfile = () => {
                     // </Col>
 
                     <CForm key={index}>
-                      {item.trainee.traineeId == 1 ? renderForm(item) : ""}
+                      {item.trainee.traineeId ==
+                      (employeeId ? employeeId.id : 1)
+                        ? renderForm(item)
+                        : ""}
                       {/* </CForm> */}
                       {/* </Col> */}
                       {/* <Col sm={4}> */}

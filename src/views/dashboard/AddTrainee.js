@@ -429,7 +429,8 @@ export default class AddTrainee extends Component {
             casteCategory: response.data.trainee.casteCategory,
             currentlyPursuingEducation:
               response.data.trainee.currentlyPursuingEducation
-          }
+          },
+          submitted: true
         })
         console.log(response.data)
       })
@@ -802,30 +803,43 @@ export default class AddTrainee extends Component {
 
   render() {
     return (
-      <Container>
-        <Row className="justify-content-center">
-          <Col md={8}>
-            <Card>
-              <CardHeader className="bg-primary text-white">
-                ADD Student Profile
-              </CardHeader>
-              <CardBody>
-                <Row className="mb-4">
-                  <Col sm={4}>
-                    <CAvatar
-                      sx={{ height: "170px", width: "170px" }}
-                      src={avatar1}
-                      size="xl"
-                    />
-                  </Col>
-                  {this.renderForm()}
-                </Row>
-                {/* Rest of the profile information */}
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+      <div className="container">
+        <div className="submit-form">
+          {this.state.submitted ? (
+            <div>
+              <h4 style={{ color: "black" }}>You submitted successfully!</h4>
+              <button className="btn btn-success" onClick={this.newTrainee}>
+                Add
+              </button>
+            </div>
+          ) : (
+            <Container>
+              <Row className="justify-content-center">
+                <Col md={8}>
+                  <Card>
+                    <CardHeader className="bg-primary text-white">
+                      ADD Student Profile
+                    </CardHeader>
+                    <CardBody>
+                      <Row className="mb-4">
+                        <Col sm={4}>
+                          <CAvatar
+                            sx={{ height: "170px", width: "170px" }}
+                            src={avatar1}
+                            size="xl"
+                          />
+                        </Col>
+                        {this.renderForm()}
+                      </Row>
+                      {/* Rest of the profile information */}
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          )}
+        </div>
+      </div>
     )
   }
 }

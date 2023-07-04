@@ -38,9 +38,14 @@ import {
   CTableHeaderCell,
   CTableRow
 } from "@coreui/react"
+import { useLocation } from "react-router-dom"
 const TrainingProfile = () => {
   const [trainings, setTrainings] = useState([])
-
+  const location = useLocation()
+  // console.log(props, " props")
+  // console.log(location, " UseLocation Hook")
+  // console.log(location.state.id, " UseLocation Id")
+  const employeeId = location && location.state
   useEffect(() => {
     fetchData()
   }, [])
@@ -343,7 +348,10 @@ const TrainingProfile = () => {
                     // </Col>
 
                     <CForm key={index}>
-                      {item.training.traineeId == 1 ? renderForm(item) : ""}
+                      {item.training.traineeId ==
+                      (employeeId ? employeeId.id : 1)
+                        ? renderForm(item)
+                        : ""}
                       {/* </CForm> */}
                       {/* </Col> */}
                       {/* <Col sm={4}> */}

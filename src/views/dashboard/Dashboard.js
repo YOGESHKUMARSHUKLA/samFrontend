@@ -1,9 +1,10 @@
 import React from "react"
 import "./dashboard.css"
 import TraineeDataService from "../../services/trainee.service"
-import Profile from "./Profile"
+import StudentProfile from "./Profile"
 import AddTrainee from "./Training"
 // import AddTrainee from "./AddTraining"
+import { Link } from "react-router-dom"
 import {
   CAvatar,
   CButton,
@@ -22,6 +23,7 @@ import {
   CTableHeaderCell,
   CTableRow
 } from "@coreui/react"
+import { Navigate, Route, Routes, useRouteMatch } from "react-router-dom"
 import { cilPencil } from "@coreui/icons"
 import { CChartLine } from "@coreui/react-chartjs"
 import { getStyle, hexToRgba } from "@coreui/utils"
@@ -63,6 +65,7 @@ import { useState } from "react"
 
 const Dashboard = () => {
   const [trainees, setTrainees] = useState([])
+  const [id, setId] = useState([])
 
   useEffect(() => {
     fetchData()
@@ -691,7 +694,18 @@ const Dashboard = () => {
                             style={{ width: "10%" }}
                             className="text-center"
                           >
-                            <CIcon icon={cilPencil} />
+                            <Link
+                              to="/StudentProfile"
+                              state={{ id: item.trainee.traineeId }}
+                              className="nav-link"
+                            >
+                              <CIcon icon={cilPencil} />
+                            </Link>
+
+                            {/* <StudentProfile employeeId={1}>
+                              {" "}
+                              <CIcon icon={cilPencil} />
+                            </StudentProfile> */}
                           </CTableDataCell>
 
                           <CTableDataCell></CTableDataCell>
