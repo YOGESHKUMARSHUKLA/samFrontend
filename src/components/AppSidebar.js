@@ -1,5 +1,6 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
+import logos from "../../src/assets/images/logo3.jpg"
 
 import {
   CSidebar,
@@ -35,7 +36,22 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} />
+        {/* <CIcon
+          className="sidebar-brand-full"
+          icon={logoNegative}
+          src={logos}
+          height={35}
+        /> */}
+        <div>
+          <img src={logos} alt="logo" />
+        </div>
+
+        <CIcon
+          className="sidebar-brand-full"
+          src={logos}
+          icon={logoNegative}
+          height={35}
+        />
         <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />
       </CSidebarBrand>
       <CSidebarNav>
