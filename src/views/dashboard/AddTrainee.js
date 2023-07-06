@@ -788,11 +788,11 @@ export default class AddTrainee extends Component {
           </CFormLabel>
           <div>
             <CButton type="submit" onClick={this.saveTrainee} className="mb-3">
-              Add
+              Submit
             </CButton>
             {"    "}
             <CButton type="submit" onClick={this.newTrainee} className="mb-3">
-              New
+              Back
             </CButton>
           </div>
           {/* </div> */}
@@ -825,9 +825,12 @@ export default class AddTrainee extends Component {
                         <Col sm={4}>
                           <CAvatar
                             sx={{ height: "170px", width: "170px" }}
-                            src={avatar1}
+                            color="primary"
+                            textColor="white"
                             size="xl"
-                          />
+                          >
+                            Pic
+                          </CAvatar>
                         </Col>
                         {this.renderForm()}
                       </Row>

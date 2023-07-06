@@ -3,12 +3,21 @@ import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap"
 import TraineeDataService from "../../services/placement.service"
 import { useEffect } from "react"
 import { useState } from "react"
-import avatar1 from "src/assets/images/avatars/1.jpg"
+import { CImage } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 import AddPlacement from "./AddPlacement"
 import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
 import { Navigate, Route, Routes } from "react-router-dom"
+import avatar1 from "src/assets/images/avatars/1.jpg"
+import avatar2 from "src/assets/images/avatars/2.jpg"
+import avatar3 from "src/assets/images/avatars/3.jpg"
+import avatar4 from "src/assets/images/avatars/4.jpg"
+import avatar5 from "src/assets/images/avatars/5.jpg"
+import avatar6 from "src/assets/images/avatars/6.jpg"
+import avatar7 from "src/assets/images/avatars/7.jpg"
+import avatar8 from "src/assets/images/avatars/8.jpg"
+import avatar9 from "src/assets/images/avatars/9.jpg"
 import {
   CFormLabel,
   CFormTextarea,
@@ -41,7 +50,7 @@ import {
 import { useLocation } from "react-router-dom"
 const StudentProfile = () => {
   const [trainees, setTrainees] = useState([])
-
+  // const [addFlag, setAddFlag] = useState(true)
   const location = useLocation()
   // console.log(props, " props")
   // console.log(location, " UseLocation Hook")
@@ -79,6 +88,7 @@ const StudentProfile = () => {
   }
 
   const renderForm = item => {
+    // setAddFlag(true)
     return (
       <>
         <div className="mb-3">
@@ -176,7 +186,7 @@ const StudentProfile = () => {
             />
           </CFormLabel>
           <div>
-            <CButton type="submit" className="mb-3">
+            {/* <CButton type="submit" className="mb-3">
               Student
             </CButton>
             {"   "}
@@ -186,9 +196,9 @@ const StudentProfile = () => {
             {"   "}
             <CButton type="submit" className="mb-3">
               Placement Tracking
-            </CButton>{" "}
+            </CButton>{" "} */}
             {"   "}
-            <CButton type="submit" className="mb-3">
+            {/* <CButton type="submit" className="mb-3">
               <Link
                 to={"/AddPlacement"}
                 className="nav-link"
@@ -196,7 +206,7 @@ const StudentProfile = () => {
               >
                 Add Placement
               </Link>
-            </CButton>
+            </CButton> */}
           </div>
           {/* </div> */}
         </div>
@@ -206,98 +216,27 @@ const StudentProfile = () => {
       </>
     )
   }
-  const renderForm2 = item => {
+  const AddPlac = () => {
+    // if (addFlag === false) {
     return (
-      <>
-        <div className="mb-3">
-          <CFormLabel htmlFor="exampleFormControlInput1">
-            {"Type of Identification : "}
+      <div>
+        <CButton type="submit" className="mb-3">
+          <Link
+            to={"/AddPlacement"}
+            className="nav-link"
+            style={{ color: "white" }}
+            state={{ id: employeeId.id }}
+          >
+            Add Placement
+          </Link>
+        </CButton>
 
-            <CFormInput
-              readOnly
-              type="email"
-              id="exampleFormControlInput1"
-              placeholder="name@example.com"
-              value={item.trainee.nameOfTrainee}
-            />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"DOB : "}
-
-            <CFormInput readOnly value={item.trainee.dateOfBirth} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Gender : "}
-
-            <CFormInput readOnly value={item.trainee.gender} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Marital Status : "}
-
-            <CFormInput readOnly value={item.trainee.maritalStatus} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Caste Category : "}
-
-            <CFormInput readOnly value={item.trainee.casteCategory} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Guardian Type : "}
-
-            <CFormInput readOnly value={item.trainee.guardianType} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Name of Guardian/Spouse/Parent : "}
-
-            <CFormInput readOnly value={item.trainee.nameOfGuardian} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Family Economic Status : "}
-
-            <CFormInput readOnly value={item.trainee.familyEconomicStatus} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Source of Household Income : "}
-
-            <CFormInput readOnly value={item.trainee.sourceOfHouseholdIncome} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Trainee Annual Income : "}
-
-            <CFormInput readOnly value={item.trainee.traineeAnnualIncome} />
-          </CFormLabel>{" "}
-          {/* <div className="mb-3 sm col-xs-offset-2"> */}
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Annual Household Income : "}
-
-            <CFormInput readOnly value={item.trainee.annualHouseholdIncome} />
-          </CFormLabel>
-          <div>
-            <CButton type="submit" className="mb-3">
-              Student
-            </CButton>
-            {"   "}
-            <CButton type="submit" className="mb-3">
-              Training
-            </CButton>
-            {"   "}
-            <CButton type="submit" className="mb-3">
-              Placement Tracking
-            </CButton>
-          </div>
-          {/* </div> */}
-        </div>
-      </>
+        <Routes>
+          <Route path="/AddPlacement" element={<AddPlacement />} />
+        </Routes>
+      </div>
     )
+    // }
   }
 
   return (
@@ -311,34 +250,47 @@ const StudentProfile = () => {
             <CardBody>
               <Row className="mb-4">
                 <Col sm={4}>
-                  <CAvatar
-                    sx={{ height: "170px", width: "170px" }}
-                    src={avatar1}
-                    size="xl"
-                  />
+                  <div className="clearfix">
+                    <CImage
+                      align="center"
+                      rounded
+                      src={
+                        (employeeId != null ? employeeId.id : 1) % 10 == 1
+                          ? avatar1
+                          : (employeeId != null ? employeeId.id : 1) % 10 == 2
+                          ? avatar2
+                          : (employeeId != null ? employeeId.id : 1) % 10 == 3
+                          ? avatar3
+                          : (employeeId != null ? employeeId.id : 1) % 10 == 4
+                          ? avatar4
+                          : (employeeId != null ? employeeId.id : 1) % 10 == 5
+                          ? avatar5
+                          : (employeeId != null ? employeeId.id : 1) % 10 == 6
+                          ? avatar6
+                          : (employeeId != null ? employeeId.id : 1) % 10 == 7
+                          ? avatar7
+                          : (employeeId != null ? employeeId.id : 1) % 10 == 8
+                          ? avatar8
+                          : avatar9
+                      }
+                      width={200}
+                      height={200}
+                    />
+                  </div>
                 </Col>
+
                 {trainees &&
                   trainees.map((item, index) => (
-                    // <Col sm={8} key={index}>
-                    //   {item.trainee.traineeId == 1
-                    //     ? renderNestedFields(item.trainee)
-                    //     : "traineeId does not exist"}
-                    // </Col>
-
                     <CForm key={index}>
-                      {item.placement.traineeId ==
+                      {item.placement.traineeId ===
                       (employeeId ? employeeId.id : 1)
                         ? renderForm(item)
                         : ""}
-                      {/* </CForm> */}
-                      {/* </Col> */}
-                      {/* <Col sm={4}> */}
-                      {/* <CForm> */}
-                      {/* {item.trainee.traineeId == 1 ? renderForm2(item) : ""} */}
+                      {/* : AddPlac()} */}
                     </CForm>
                   ))}
               </Row>
-              {/* Rest of the profile information */}
+              {AddPlac()}
             </CardBody>
           </Card>
         </Col>

@@ -94,7 +94,7 @@
 // }
 
 // export default Login
-
+import { CAlert } from "@coreui/react"
 import React, { useState } from "react"
 import { Link, redirect } from "react-router-dom"
 import {
@@ -119,7 +119,7 @@ import {
   getAuth
 } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
-
+import logo from "src/assets/images/logo3.jpg"
 const firebaseConfig = {
   apiKey: "AIzaSyDWSQU1EcMIsu63oI-FdndsePSue7HVCSE",
   authDomain: "hsbc-greensavers-sams-dev.firebaseapp.com"
@@ -135,6 +135,15 @@ const Login = () => {
   const navigate = useNavigate()
   const [emailId, setEmailId] = useState("")
   const [password, setPassword] = useState("")
+  const [loginError, setLoginError] = useState(false)
+  const renderLoginError = () => {
+    if (loginError) {
+      return (
+        <CAlert color="danger">Wrong credentials. Please try again.</CAlert>
+      )
+    }
+    return null
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -148,6 +157,8 @@ const Login = () => {
       })
       .catch(error => {
         console.log(error)
+
+        setLoginError(true)
       })
   }
 
@@ -159,6 +170,10 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
+                  <div>
+                    <img src={logo} alt="logo" />
+                    <p>Student Assessment Management System</p>
+                  </div>
                   <CForm onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">
@@ -201,6 +216,7 @@ const Login = () => {
                       </CCol>
                     </CRow>
                   </CForm>
+                  {renderLoginError()}
                 </CCardBody>
               </CCard>
               <CCard
@@ -210,7 +226,10 @@ const Login = () => {
                 <CCardBody className="text-center">
                   <div>
                     <h2>Sign up</h2>
-                    <p></p>
+                    <div>
+                      <img src={logo} alt="logo" />
+                    </div>
+                    <p>Student Assessment Management System</p>
                     <Link to="/register">
                       <CButton
                         color="primary"

@@ -41,7 +41,7 @@ const _nav = [
       {
         component: CNavItem,
         name: "Login",
-        to: "/login",
+        to: "/",
         icon: <CIcon icon={cilUser} customClassName="nav-icon" />
       },
       {
@@ -77,7 +77,7 @@ const _nav = [
       {
         component: CNavItem,
         name: "Edit",
-        to: "/base/cards",
+        to: "/Trainee",
         icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
       }
     ]
@@ -163,7 +163,7 @@ const _nav = [
   {
     component: CNavItem,
     name: "Bulk Upload",
-    to: "/charts",
+    to: "/Bulk",
     icon: <CIcon icon={cilArrowThickFromBottom} customClassName="nav-icon" />
   },
   {

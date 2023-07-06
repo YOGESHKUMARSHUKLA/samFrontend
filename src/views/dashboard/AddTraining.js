@@ -493,11 +493,11 @@ export default class AddTraining extends Component {
           </CFormLabel>{" "}
           <div>
             <CButton type="submit" onClick={this.saveTraining} className="mb-3">
-              Add
+              Submit
             </CButton>
             {"    "}
             <CButton type="submit" onClick={this.newTraining} className="mb-3">
-              New
+              Back
             </CButton>
           </div>
           {/* </div> */}
@@ -512,7 +512,9 @@ export default class AddTraining extends Component {
         <div className="submit-form">
           {this.state.submitted ? (
             <div>
-              <h4 style={{ color: "black" }}>You submitted successfully!</h4>
+              <h4 style={{ color: "black" }}>
+                Training submitted successfully!
+              </h4>
               <button className="btn btn-success" onClick={this.newTraining}>
                 Add
               </button>
@@ -530,9 +532,12 @@ export default class AddTraining extends Component {
                         <Col sm={4}>
                           <CAvatar
                             sx={{ height: "170px", width: "170px" }}
-                            src={avatar1}
+                            color="primary"
+                            textColor="white"
                             size="xl"
-                          />
+                          >
+                            PIC
+                          </CAvatar>
                         </Col>
                         {this.renderForm()}
                       </Row>

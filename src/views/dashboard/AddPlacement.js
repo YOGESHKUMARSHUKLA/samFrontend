@@ -455,11 +455,11 @@ export default class AddPlacement extends Component {
               onClick={this.savePlacement}
               className="mb-3"
             >
-              Add Placement
+              Submit
             </CButton>
             {"    "}
             <CButton type="submit" onClick={this.newPlacement} className="mb-3">
-              New
+              Back
             </CButton>
           </div>
           {/* </div> */}
@@ -473,7 +473,9 @@ export default class AddPlacement extends Component {
         <div className="submit-form">
           {this.state.submitted ? (
             <div>
-              <h4 style={{ color: "black" }}>You submitted successfully!</h4>
+              <h4 style={{ color: "black" }}>
+                Placement submitted successfully!
+              </h4>
               <button className="btn btn-success" onClick={this.newPlacement}>
                 Add
               </button>
@@ -491,9 +493,12 @@ export default class AddPlacement extends Component {
                         <Col sm={4}>
                           <CAvatar
                             sx={{ height: "170px", width: "170px" }}
-                            src={avatar1}
+                            color="primary"
+                            textColor="white"
                             size="xl"
-                          />
+                          >
+                            PIC
+                          </CAvatar>
                         </Col>
                         {this.renderForm()}
                       </Row>

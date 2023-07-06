@@ -3,12 +3,21 @@ import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap"
 import TrainingDataService from "../../services/training.service"
 import { useEffect } from "react"
 import { useState } from "react"
-import avatar1 from "src/assets/images/avatars/1.jpg"
 import CIcon from "@coreui/icons-react"
 import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
 import AddTraining from "./AddTraining"
+import { CImage } from "@coreui/react"
 import { Navigate, Route, Routes } from "react-router-dom"
+import avatar1 from "src/assets/images/avatars/1.jpg"
+import avatar2 from "src/assets/images/avatars/2.jpg"
+import avatar3 from "src/assets/images/avatars/3.jpg"
+import avatar4 from "src/assets/images/avatars/4.jpg"
+import avatar5 from "src/assets/images/avatars/5.jpg"
+import avatar6 from "src/assets/images/avatars/6.jpg"
+import avatar7 from "src/assets/images/avatars/7.jpg"
+import avatar8 from "src/assets/images/avatars/8.jpg"
+import avatar9 from "src/assets/images/avatars/9.jpg"
 import {
   CFormLabel,
   CFormTextarea,
@@ -81,7 +90,10 @@ const TrainingProfile = () => {
     return (
       <>
         <div className="mb-3">
-          <CFormLabel htmlFor="exampleFormControlInput1">
+          <CButton className="mb-3">
+            {`Training Number : ${item.training.trainingId}`}
+          </CButton>{" "}
+          {/* <CFormLabel htmlFor="exampleFormControlInput1">
             {"Training Id : "}
 
             <CFormInput
@@ -91,7 +103,7 @@ const TrainingProfile = () => {
               placeholder="name@example.com"
               value={item.training.trainingId}
             />
-          </CFormLabel>{" "}
+          </CFormLabel>{" "} */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
             {"Course Name : "}
 
@@ -204,30 +216,11 @@ const TrainingProfile = () => {
             <CFormInput readOnly value={item.training.comments} />
           </CFormLabel>
           {/* </div> */}
-          <div>
-            <CButton type="submit" className="mb-3">
-              <Link
-                to={"/AddTraining"}
-                className="nav-link"
-                style={{ color: "white" }}
-              >
-                AddTraining
-              </Link>
-            </CButton>
-          </div>
         </div>
-        <Routes>
-          <Route path="/AddTraining" element={<AddTraining />} />
-        </Routes>
       </>
     )
   }
-  ;<Routes>
-    <Route
-      path="/AddTraining"
-      element={<Navigate to="AddTraining" replace />}
-    />
-  </Routes>
+
   const renderForm2 = item => {
     return (
       <>
@@ -321,7 +314,25 @@ const TrainingProfile = () => {
       </>
     )
   }
+  const AddTran = () => {
+    return (
+      <div>
+        <CButton type="submit" className="mb-3">
+          <Link
+            to={"/AddTraining"}
+            className="nav-link"
+            style={{ color: "white" }}
+          >
+            AddTraining
+          </Link>
+        </CButton>
 
+        <Routes>
+          <Route path="/AddTraining" element={<AddTraining />} />
+        </Routes>
+      </div>
+    )
+  }
   return (
     <Container>
       <Row className="justify-content-center">
@@ -332,13 +343,33 @@ const TrainingProfile = () => {
             </CardHeader>
             <CardBody>
               <Row className="mb-4">
-                <Col sm={4}>
-                  <CAvatar
-                    sx={{ height: "170px", width: "170px" }}
-                    src={avatar1}
-                    size="xl"
+                <div className="clearfix">
+                  <CImage
+                    align="center"
+                    rounded
+                    src={
+                      (employeeId != null ? employeeId.id : 1) % 10 == 1
+                        ? avatar1
+                        : (employeeId != null ? employeeId.id : 1) % 10 == 2
+                        ? avatar2
+                        : (employeeId != null ? employeeId.id : 1) % 10 == 3
+                        ? avatar3
+                        : (employeeId != null ? employeeId.id : 1) % 10 == 4
+                        ? avatar4
+                        : (employeeId != null ? employeeId.id : 1) % 10 == 5
+                        ? avatar5
+                        : (employeeId != null ? employeeId.id : 1) % 10 == 6
+                        ? avatar6
+                        : (employeeId != null ? employeeId.id : 1) % 10 == 7
+                        ? avatar7
+                        : (employeeId != null ? employeeId.id : 1) % 10 == 8
+                        ? avatar8
+                        : avatar9
+                    }
+                    width={200}
+                    height={200}
                   />
-                </Col>
+                </div>
                 {trainings &&
                   trainings.map((item, index) => (
                     // <Col sm={8} key={index}>
@@ -361,6 +392,7 @@ const TrainingProfile = () => {
                   ))}
               </Row>
               {/* Rest of the profile information */}
+              {AddTran()}
             </CardBody>
           </Card>
         </Col>

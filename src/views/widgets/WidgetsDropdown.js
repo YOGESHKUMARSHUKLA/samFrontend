@@ -23,7 +23,7 @@ const WidgetsDropdown = () => {
             color="primary"
             value={
               <>
-                STUDENTS 38 <span className="fs-6 fw-normal"></span>
+                Students 38 <span className="fs-6 fw-normal"></span>
               </>
             }
             title=""
@@ -122,7 +122,7 @@ const WidgetsDropdown = () => {
             color="info"
             value={
               <>
-                PLACEMENTS 14
+                Placements 14
                 {/* <span className="fs-6 fw-normal">
                 (4.9% <CIcon icon={cilArrowTop} />)
               </span> */}
@@ -223,7 +223,7 @@ const WidgetsDropdown = () => {
             color="warning"
             value={
               <>
-                TRAINERS 7
+                Trainers 7
                 {/* <span className="fs-6 fw-normal">
                 (84.7% <CIcon icon={cilArrowTop} />)
               </span> */}
@@ -415,7 +415,7 @@ const WidgetsDropdown = () => {
             color="danger"
             value={
               <>
-                EMPLOYEES 11
+                Employees 11
                 {/* <span className="fs-6 fw-normal">
                 (-23.6% <CIcon icon={cilArrowBottom} />)
               </span> */}
@@ -517,7 +517,7 @@ const WidgetsDropdown = () => {
             color="dark"
             value={
               <>
-                COMPANIES 4
+                Companies 4
                 {/* <span className="fs-6 fw-normal">
                 (-23.6% <CIcon icon={cilArrowBottom} />)
               </span> */}
@@ -619,7 +619,7 @@ const WidgetsDropdown = () => {
             color="secondary"
             value={
               <>
-                RESUMES 38
+                Resumes 38
                 {/* <span className="fs-6 fw-normal">
                 (-23.6% <CIcon icon={cilArrowBottom} />)
               </span> */}
@@ -721,7 +721,7 @@ const WidgetsDropdown = () => {
             color="primary"
             value={
               <>
-                NOTIFICATION 8
+                Notification 8
                 {/* <span className="fs-6 fw-normal">
                 (-23.6% <CIcon icon={cilArrowBottom} />)
               </span> */}
