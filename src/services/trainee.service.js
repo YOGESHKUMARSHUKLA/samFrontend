@@ -11,6 +11,11 @@ class TraineeDataService {
   create(data) {
     return http.post("/trainee-details/trainees", data)
   }
+  getSingleTrainee(identifier, identifyingNumber) {
+    return http.get(
+      `/trainee-details/trainees/identification?typeOfIdentification=${identifier}&identificationDocumentNumber=${identifyingNumber}`
+    )
+  }
 
   update(id, data) {
     return http.put(`/trainee-details/trainees/${id}`, data)
