@@ -200,17 +200,17 @@ export default class EditTrainee extends Component {
       console.log(response.data[0][1].id)
       const images = response.data[0]
         .filter(
-          item => item.id === `uploads%2F${this.state.traineeId}_post.jpeg`
+          item => item.id === `${this.state.traineeId}_post.jpeg`
         )
         .map(item => ({
           id: item.id,
-          url: `https://storage.googleapis.com/storagesam/${item.id}` // Replace with the actual URL format for your images
+          url: `https://storage.googleapis.com/sams-bulk-upload-start/${item.id}` // Replace with the actual URL format for your images
         }))
       const csvs = response.data[0]
         .filter(item => item.id.includes("csv"))
         .map(item => ({
           id: item.id,
-          url: `https://storage.googleapis.com/storagesam/${item.id}` // Replace with the actual URL format for your images
+          url: `https://storage.googleapis.com/sams-bulk-upload-start/${item.id}` // Replace with the actual URL format for your images
         }))
 
       this.setState({ images })
@@ -297,17 +297,17 @@ export default class EditTrainee extends Component {
       console.log(response.data[0][1].id)
       const images = response.data[0]
         .filter(
-          item => item.id === `uploads%2F${this.state.traineeId}_post.jpeg`
+          item => item.id === `${this.state.traineeId}_post.jpeg`
         )
         .map(item => ({
           id: item.id,
-          url: `https://storage.googleapis.com/storagesam/${item.id}` // Replace with the actual URL format for your images
+          url: `https://storage.googleapis.com/sams-bulk-upload-start/${item.id}` // Replace with the actual URL format for your images
         }))
       const csvs = response.data[0]
         .filter(item => item.id.includes("csv"))
         .map(item => ({
           id: item.id,
-          url: `https://storage.googleapis.com/storagesam/${item.id}` // Replace with the actual URL format for your images
+          url: `https://storage.googleapis.com/sams-bulk-upload-start/${item.id}` // Replace with the actual URL format for your images
         }))
 
       this.setState({ images })
