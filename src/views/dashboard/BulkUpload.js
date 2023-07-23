@@ -190,13 +190,9 @@ export default class AddTrainee extends Component {
       console.log(filez)
       // Create new file so we can rename the file
       let blob = filez.slice(0, filez.size, "text/csv")
-      const newFile = new File(
-        [blob],
-        `PBMA_HistoricalData${postid}_post.csv`,
-        {
-          type: "text/csv"
-        }
-      )
+      const newFile = new File([blob], `PBMA_HistoricalData_post.csv`, {
+        type: "text/csv"
+      })
       console.log(newFile)
       // Build the form data - You can add other input values to this i.e descriptions, make sure img is appended last
       const formData = new FormData()
@@ -308,7 +304,7 @@ export default class AddTrainee extends Component {
           {"     "}
         </div> */}
 
-        <CListGroup>
+        {/* <CListGroup>
           {csvs &&
             csvs.map((cv, index) =>
               index === csvs.length - 1 ? (
@@ -322,7 +318,7 @@ export default class AddTrainee extends Component {
               )
             )}
           {"     "}
-        </CListGroup>
+        </CListGroup> */}
       </div>
     )
   }
