@@ -26,29 +26,41 @@
     "lint:fix": "eslint --fix ."
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.1.12",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.29",
+    "react-pdf": "^7.1.2",
     "@coreui/chartjs": "^3.1.1",
     "@coreui/coreui": "^4.2.6",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.1.0",
     "@coreui/react": "^4.6.0",
     "@coreui/react-chartjs": "^2.1.2",
+    "@coreui/react-pro": "^4.12.2",
     "@coreui/utils": "^2.0.1",
+    "@google-cloud/storage": "^5.18.3",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "chart.js": "^3.9.1",
     "classnames": "^2.3.2",
     "core-js": "^3.29.0",
     "eslint": "^8.43.0",
+    "express": "^4.17.3",
     "firebase": "^9.23.0",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-recaptcha": "^2.3.10",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.2",
     "reactstrap": "^9.2.0",
     "redux": "4.2.1",
-    "simplebar-react": "^2.4.3"
+    "simplebar-react": "^2.4.3",
+    "url": "^0.11.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -60,7 +72,8 @@
     "prettier": "^2.8.4",
     "react-scripts": "5.0.1",
     "sass": "^1.58.3",
-    "web-vitals": "^3.1.1"
+    "web-vitals": "^3.1.1",
+    "webpack-cli": "^5.1.4"
   },
   "engines": {
     "node": ">=10",

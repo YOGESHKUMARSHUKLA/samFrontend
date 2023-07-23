@@ -15,13 +15,13 @@ const Charts = () => {
 
   return (
     <CRow>
-      <CCol xs={12}>
+      {/* <CCol xs={12}>
         <DocsCallout
           name="Chart"
           href="components/chart"
           content="React wrapper component for Chart.js 3.0, the most popular charting library."
         />
-      </CCol>
+      </CCol> */}
       <CCol xs={6}>
         <CCard className="mb-4">
           <CCardHeader>Bar Chart</CCardHeader>
@@ -39,7 +39,7 @@ const Charts = () => {
                 ],
                 datasets: [
                   {
-                    label: "GitHub Commits",
+                    label: "Addition Of  Trainees",
                     backgroundColor: "#f87979",
                     data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
                   }
@@ -67,7 +67,7 @@ const Charts = () => {
                 ],
                 datasets: [
                   {
-                    label: "My First dataset",
+                    label: "Bulk Upload",
                     backgroundColor: "rgba(220, 220, 220, 0.2)",
                     borderColor: "rgba(220, 220, 220, 1)",
                     pointBackgroundColor: "rgba(220, 220, 220, 1)",
@@ -83,7 +83,7 @@ const Charts = () => {
                     ]
                   },
                   {
-                    label: "My Second dataset",
+                    label: "Online Registration",
                     backgroundColor: "rgba(151, 187, 205, 0.2)",
                     borderColor: "rgba(151, 187, 205, 1)",
                     pointBackgroundColor: "rgba(151, 187, 205, 1)",
@@ -110,16 +110,16 @@ const Charts = () => {
           <CCardBody>
             <CChartDoughnut
               data={{
-                labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
+                labels: ["Admin", "Student", "Trainer"],
                 datasets: [
                   {
                     backgroundColor: [
                       "#41B883",
                       "#E46651",
-                      "#00D8FF",
-                      "#DD1B16"
+                      "#00D8FF"
+                      // "#DD1B16"
                     ],
-                    data: [40, 20, 80, 10]
+                    data: [40, 20, 80]
                   }
                 ]
               }}
@@ -129,11 +129,11 @@ const Charts = () => {
       </CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>Pie Chart</CCardHeader>
+          <CCardHeader>Pie Chart for Result Percentage</CCardHeader>
           <CCardBody>
             <CChartPie
               data={{
-                labels: ["Red", "Green", "Yellow"],
+                labels: ["Greater than 60", "40 -60", "Less than 40"],
                 datasets: [
                   {
                     data: [300, 50, 100],
@@ -148,11 +148,19 @@ const Charts = () => {
       </CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>Polar Area Chart</CCardHeader>
+          <CCardHeader>
+            Polar Area Chart for Average Percentage in Subjects
+          </CCardHeader>
           <CCardBody>
             <CChartPolarArea
               data={{
-                labels: ["Red", "Green", "Yellow", "Grey", "Blue"],
+                labels: [
+                  "Mathematics",
+                  "Electroincs",
+                  "Computer Science",
+                  "Electrical",
+                  "Biology"
+                ],
                 datasets: [
                   {
                     data: [11, 16, 7, 3, 14],
@@ -177,17 +185,17 @@ const Charts = () => {
             <CChartRadar
               data={{
                 labels: [
-                  "Eating",
-                  "Drinking",
-                  "Sleeping",
-                  "Designing",
-                  "Coding",
-                  "Cycling",
-                  "Running"
+                  "Electronics",
+                  "Biology",
+                  "Mechanical",
+                  "Electrical",
+                  "Mathematics",
+                  "Computer Science",
+                  "Information Technology"
                 ],
                 datasets: [
                   {
-                    label: "My First dataset",
+                    label: "Trainee1",
                     backgroundColor: "rgba(220, 220, 220, 0.2)",
                     borderColor: "rgba(220, 220, 220, 1)",
                     pointBackgroundColor: "rgba(220, 220, 220, 1)",
@@ -197,7 +205,7 @@ const Charts = () => {
                     data: [65, 59, 90, 81, 56, 55, 40]
                   },
                   {
-                    label: "My Second dataset",
+                    label: "Trainee2",
                     backgroundColor: "rgba(151, 187, 205, 0.2)",
                     borderColor: "rgba(151, 187, 205, 1)",
                     pointBackgroundColor: "rgba(151, 187, 205, 1)",

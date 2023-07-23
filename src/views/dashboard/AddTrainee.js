@@ -1,13 +1,9 @@
 import React, { Component } from "react"
 import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap"
 import TraineeDataService from "../../services/trainee.service"
-import { useEffect } from "react"
-import { useState } from "react"
-import avatar1 from "src/assets/images/avatars/1.jpg"
-import CIcon from "@coreui/icons-react"
-import { cilLockLocked, cilUser } from "@coreui/icons"
-import { Link } from "react-router-dom"
-import Placement from "./Placement"
+import axios from "axios"
+import { CImage } from "@coreui/react"
+import GoogleDataService from "../../services/google.service"
 import { Navigate, Route, Routes } from "react-router-dom"
 import {
   CFormLabel,
@@ -97,6 +93,12 @@ export default class AddTrainee extends Component {
     this.onChangecasteCategory = this.onChangecasteCategory.bind(this)
     this.onChangecurrentlyPursuingEducation =
       this.onChangecurrentlyPursuingEducation.bind(this)
+    this.onChangepartnerName = this.onChangepartnerName.bind(this)
+    this.onChangecentreAddress = this.onChangecentreAddress.bind(this)
+    this.onChangecentreLocation = this.onChangecentreLocation.bind(this)
+    this.onChangelastUpdateTimestamp =
+      this.onChangelastUpdateTimestamp.bind(this)
+    this.onChangecreationTimestamp = this.onChangecreationTimestamp.bind(this)
 
     this.state = {
       trainee: {
@@ -111,7 +113,13 @@ export default class AddTrainee extends Component {
           pwdCertificate: "",
           typeOfDisability: ""
         },
+        implementingPartnerDetails: {
+          partnerName: "",
+          centreAddress: "",
+          centreLocation: ""
+        },
         nameOfTrainee: "",
+        lastUpdateTimestamp: "",
         identificationDetails: {
           pincode: "",
           aadharNumber: "",
@@ -147,6 +155,140 @@ export default class AddTrainee extends Component {
       submitted: false
     }
   }
+  state = {
+    file: null,
+    uploading: false,
+    uploadProgress: 0,
+    uploadedFileUrl: null
+  }
+  componentDidMount() {
+    this.fetchData()
+    this.updateDateTimeInterval = setInterval(this.updateDateTime, 1000)
+    this.updateClientTimeZone()
+  }
+  updateClientTimeZone = () => {
+    const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    this.setState({ clientTimeZone })
+  }
+  componentWillUnmount() {
+    clearInterval(this.updateDateTimeInterval)
+  }
+  padNumber = (number, length = 2) => {
+    return String(number).padStart(length, "0")
+  }
+  updateDateTime = () => {
+    // const options = {
+    //   year: "numeric",
+    //   month: "2-digit",
+    //   day: "2-digit",
+    //   hour: "2-digit",
+    //   minute: "2-digit",
+    //   second: "2-digit",
+    //   fractionalSecondDigits: 3,
+    //   timeZone: "Asia/Kolkata" // Indian Standard Time (IST)
+    // }
+    const dateObj = new Date()
+    // dateObj.setHours(dateObj.getHours() + 5) // Add 5 hours
+    // dateObj.setMinutes(dateObj.getMinutes() + 30) // Add 30 minutes
+
+    const year = dateObj.getFullYear()
+    const month = this.padNumber(dateObj.getMonth() + 1)
+    const day = this.padNumber(dateObj.getDate())
+    const hours = this.padNumber(dateObj.getHours() + 5)
+    const minutes = this.padNumber(dateObj.getMinutes() + 30)
+    const seconds = this.padNumber(dateObj.getSeconds())
+    const milliseconds = this.padNumber(dateObj.getMilliseconds(), 3)
+
+    const creationTimestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`
+
+    this.setState({ creationTimestamp })
+
+    const lastUpdateTimestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`
+
+    this.setState({ lastUpdateTimestamp })
+  }
+  fetchData = async () => {
+    try {
+      const response = await GoogleDataService.getAll()
+      console.log(response.data[0][1].id)
+      const images = response.data[0]
+        .filter(
+          item => item.id === `uploads%2F${this.state.traineeId}_post.jpeg`
+        )
+        .map(item => ({
+          id: item.id,
+          url: `https://storage.googleapis.com/storagesam/${item.id}` // Replace with the actual URL format for your images
+        }))
+      const csvs = response.data[0]
+        .filter(item => item.id.includes("csv"))
+        .map(item => ({
+          id: item.id,
+          url: `https://storage.googleapis.com/storagesam/${item.id}` // Replace with the actual URL format for your images
+        }))
+
+      this.setState({ images })
+      this.setState({ csvs })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  uuidv4() {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+      (
+        c ^
+        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+      ).toString(16)
+    )
+  }
+  handleFileUpload = async () => {
+    const file = this.state.file
+    if (!file) {
+      alert("Please select a file.")
+      return
+    }
+    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app/upload`
+    const headers = {
+      "Content-Type": "multipart/form-data",
+      // "Content-type": "application/json",
+      Accept: "image/jpeg, image/png, text/csv, application/vnd.ms-excel"
+    }
+
+    try {
+      this.setState({ uploading: true, uploadProgress: 0 })
+
+      let postid = this.state.traineeId
+      let filez = this.state.file
+      console.log(filez)
+      // Create new file so we can rename the file
+      let blob = filez.slice(0, filez.size, "image/jpeg")
+      const newFile = new File([blob], `${postid}_post.jpeg`, {
+        type: "image/jpeg"
+      })
+      console.log(newFile)
+      // Build the form data - You can add other input values to this i.e descriptions, make sure img is appended last
+      const formData = new FormData()
+      formData.append("imgfile", newFile)
+      console.log(formData)
+
+      const response = await axios.post(url, formData, {
+        headers,
+        onUploadProgress: this.handleUploadProgress
+      })
+
+      if (response.status === 200) {
+        alert("File uploaded successfully!")
+      } else {
+        alert("Error uploading file.")
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error)
+      alert("Error uploading file.")
+    } finally {
+      this.setState({ uploading: false })
+      this.fetchData()
+    }
+  }
+
   onChangeTechnicalEducation(e) {
     this.setState({
       technicalEducation: e.target.value
@@ -328,6 +470,44 @@ export default class AddTrainee extends Component {
     })
   }
 
+  onChangecreationTimestamp(e) {
+    this.setState({
+      creationTimestamp: e.target.value
+    })
+  }
+  onChangelastUpdateTimestamp(e) {
+    this.setState({
+      lastUpdateTimestamp: e.target.value
+    })
+  }
+  onChangepartnerName(e) {
+    this.setState({
+      partnerName: e.target.value
+    })
+  }
+  onChangecurrentlyPursuingEducation(e) {
+    this.setState({
+      currentlyPursuingEducation: e.target.value
+    })
+  }
+  onChangecentreAddress(e) {
+    this.setState({
+      centreAddress: e.target.value
+    })
+  }
+  onChangecentreLocation(e) {
+    this.setState({
+      centreLocation: e.target.value
+    })
+  }
+
+  handleFileChange = event => {
+    this.setState({
+      file: event.target.files[0],
+      uploadedFileUrl: null
+    })
+  }
+
   saveTrainee() {
     var data = {
       trainee: {
@@ -342,7 +522,14 @@ export default class AddTrainee extends Component {
           pwdCertificate: this.state.pwdCertificate,
           typeOfDisability: this.state.typeOfDisability
         },
+        implementingPartnerDetails: {
+          partnerName: this.state.partnerName,
+          centreAddress: this.state.centreAddress,
+          centreLocation: this.state.centreLocation
+        },
         nameOfTrainee: this.state.nameOfTrainee,
+        lastUpdateTimestamp: this.state.lastUpdateTimestamp,
+
         identificationDetails: {
           pincode: this.state.pincode,
           aadharNumber: this.state.aadharNumber,
@@ -360,6 +547,7 @@ export default class AddTrainee extends Component {
         sourceOfHouseholdIncome: this.state.sourceOfHouseholdIncome,
         nameOfGuardian: this.state.nameOfGuardian,
         annualHouseholdIncome: this.state.annualHouseholdIncome,
+        creationTimestamp: this.state.creationTimestamp,
         nameOfEducationalInstitute: this.state.nameOfEducationalInstitute,
         preTrainingDetails: {
           preJoiningCounselling: this.state.preJoiningCounselling,
@@ -391,7 +579,14 @@ export default class AddTrainee extends Component {
               pwdCertificate: response.data.trainee.pwdCertificate,
               typeOfDisability: response.data.trainee.typeOfDisability
             },
+            implementingPartnerDetails: {
+              partnerName: response.data.trainee.partnerName,
+              centreAddress: response.data.trainee.centreAddress,
+              centreLocation: response.data.trainee.centreLocation
+            },
             nameOfTrainee: response.data.trainee.nameOfTrainee,
+            lastUpdateTimestamp: response.data.trainee.lastUpdateTimestamp,
+
             identificationDetails: {
               pincode: response.data.trainee.pincode,
               aadharNumber: response.data.trainee.aadharNumber,
@@ -411,6 +606,7 @@ export default class AddTrainee extends Component {
               response.data.trainee.sourceOfHouseholdIncome,
             nameOfGuardian: response.data.trainee.nameOfGuardian,
             annualHouseholdIncome: response.data.trainee.annualHouseholdIncome,
+            creationTimestamp: response.data.trainee.creationTimestamp,
             nameOfEducationalInstitute:
               response.data.trainee.nameOfEducationalInstitute,
             preTrainingDetails: {
@@ -453,7 +649,13 @@ export default class AddTrainee extends Component {
           pwdCertificate: "",
           typeOfDisability: ""
         },
+        implementingPartnerDetails: {
+          partnerName: "",
+          centreAddress: "",
+          centreLocation: ""
+        },
         nameOfTrainee: "",
+        lastUpdateTimestamp: "",
         identificationDetails: {
           pincode: "",
           aadharNumber: "",
@@ -471,6 +673,7 @@ export default class AddTrainee extends Component {
         sourceOfHouseholdIncome: "",
         nameOfGuardian: "",
         annualHouseholdIncome: "",
+        creationTimestamp: "",
         nameOfEducationalInstitute: "",
         preTrainingDetails: {
           preJoiningCounselling: "",
@@ -494,14 +697,14 @@ export default class AddTrainee extends Component {
     return (
       <>
         <div className="mb-3">
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
+          {/* <CFormLabel htmlFor="exampleFormControlTextarea1">
             {"Trainee Id : "}
 
             <CFormInput
               value={this.state.traineeId}
               onChange={this.onChangeTraineeId}
             />
-          </CFormLabel>{" "}
+          </CFormLabel>{" "} */}
           <CFormLabel htmlFor="exampleFormControlTextarea2">
             {"Name Of Trainee : "}
 
@@ -785,6 +988,30 @@ export default class AddTrainee extends Component {
               value={this.state.currentlyPursuingEducation}
               onChange={this.onChangecurrentlyPursuingEducation}
             />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"PartnerName : "}
+
+            <CFormInput
+              value={this.state.partnerName}
+              onChange={this.onChangepartnerName}
+            />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"CentreAddress : "}
+
+            <CFormInput
+              value={this.state.centreAddress}
+              onChange={this.onChangecentreAddress}
+            />
+          </CFormLabel>
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"CentreLocation : "}
+
+            <CFormInput
+              value={this.state.centreLocation}
+              onChange={this.onChangecentreLocation}
+            />
           </CFormLabel>
           <div>
             <CButton type="submit" onClick={this.saveTrainee} className="mb-3">
@@ -800,8 +1027,29 @@ export default class AddTrainee extends Component {
       </>
     )
   }
+  handleFileChange = event => {
+    this.setState({
+      file: event.target.files[0],
+      uploadedFileUrl: null
+    })
+  }
+
+  handleUploadProgress = progressEvent => {
+    const { loaded, total } = progressEvent
+    const uploadProgress = Math.round((loaded / total) * 100)
+    this.setState({ uploadProgress })
+  }
 
   render() {
+    const {
+      uploading,
+      uploadProgress,
+      uploadedFileUrl,
+      images,
+      csvs,
+      creationTimestamp,
+      lastUpdateTimestamp
+    } = this.state
     return (
       <div className="container">
         <div className="submit-form">
@@ -822,16 +1070,52 @@ export default class AddTrainee extends Component {
                     </CardHeader>
                     <CardBody>
                       <Row className="mb-4">
-                        <Col sm={4}>
-                          <CAvatar
-                            sx={{ height: "170px", width: "170px" }}
-                            color="primary"
-                            textColor="white"
-                            size="xl"
-                          >
-                            Pic
-                          </CAvatar>
-                        </Col>
+                        {/* <Col sm={4}>
+                          <CFormLabel htmlFor="exampleFormControlTextarea1">
+                            {"Trainee Id : "}
+
+                            <CFormInput
+                              value={this.state.traineeId}
+                              onChange={this.onChangeTraineeId}
+                            />
+                          </CFormLabel>{" "}
+                          <div className="image-gallery">
+                            {images &&
+                              images.map(image => (
+                                <CImage
+                                  align="center"
+                                  rounded
+                                  key={image.id}
+                                  src={image.url}
+                                  alt={image.id}
+                                  className="gallery-image"
+                                  style={{
+                                    width: "200px",
+                                    height: "200px",
+                                    border: "1px solid #ccc",
+                                    padding: "10px",
+                                    borderRadius: "5px"
+                                  }}
+                                />
+                              ))}
+                            {"     "}
+                          </div>
+                          <CInputGroup className="mb-3">
+                            <CFormInput
+                              type="file"
+                              id="inputGroupFile02"
+                              size="sm"
+                              onChange={this.handleFileChange}
+                            />
+                            <CInputGroupText
+                              component="label"
+                              htmlFor="inputGroupFile02"
+                              onClick={this.handleFileUpload}
+                            >
+                              Upload
+                            </CInputGroupText>
+                          </CInputGroup>
+                        </Col> */}
                         {this.renderForm()}
                       </Row>
                       {/* Rest of the profile information */}

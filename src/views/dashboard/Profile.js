@@ -111,6 +111,8 @@ const StudentProfile = props => {
   }
 
   const renderForm = item => {
+    // localStorage.setItem("tranId", employeeId.id)
+
     return (
       <>
         <div className="mb-3">

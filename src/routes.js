@@ -3,10 +3,18 @@ import React from "react"
 const Dashboard = React.lazy(() => import("./views/dashboard/Dashboard"))
 const StudentProfile = React.lazy(() => import("./views/dashboard/Profile"))
 const AddTrainee = React.lazy(() => import("./views/dashboard/AddTrainee"))
+const EditTrainee = React.lazy(() => import("./views/dashboard/EditTrainee"))
 const Trainee = React.lazy(() => import("./views/dashboard/Trainee"))
+const Reports = React.lazy(() => import("./views/dashboard/Reports"))
+const AccessManagement = React.lazy(() =>
+  import("./views/dashboard/AccessManagement")
+)
 const Bulk = React.lazy(() => import("./views/dashboard/BulkUpload"))
 // const Login = React.lazy(() => import("./views/pages/login/Login"))
 const AddPlacement = React.lazy(() => import("./views/dashboard/AddPlacement"))
+const EditPlacement = React.lazy(() =>
+  import("./views/dashboard/EditPlacement")
+)
 const Placement = React.lazy(() => import("./views/dashboard/Placement"))
 const Training = React.lazy(() => import("./views/dashboard/Training"))
 const AddTraining = React.lazy(() => import("./views/dashboard/AddTraining"))
@@ -154,7 +162,15 @@ const routes = [
   { path: "/Training", name: "Training", element: Training },
   { path: "/AddTraining", name: "AddTraining", element: AddTraining },
   { path: "/AddPlacement", name: "AddPlacement", element: AddPlacement },
+  { path: "/EditPlacement", name: "EditPlacement", element: EditPlacement },
   { path: "/Trainee", name: "Trainee", element: Trainee },
+  { path: "/EditTrainee", name: "EditTrainee", element: EditTrainee },
+  { path: "/Reports", name: "Reports", element: Reports },
+  {
+    path: "/AccessManagement",
+    name: "AccessManagement",
+    element: AccessManagement
+  },
   { path: "/Bulk", name: "Bulk", element: Bulk }
 ]
 

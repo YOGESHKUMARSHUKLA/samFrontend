@@ -217,36 +217,72 @@ export default class AddTraining extends Component {
   }
 
   saveTraining() {
-    var data = {
-      training: {
-        traineeId: this.state.traineeId,
-        trainingId: this.state.trainingId,
-        comments: this.state.comments,
-        lastUpdateTimestamp: this.state.lastUpdateTimestamp,
-        creationTimestamp: this.state.creationTimestamp,
-        courseDetails: {
-          courseName: this.state.courseName,
-          sector: this.state.sector,
-          batchStartDate: this.state.batchStartDate,
-          batchEndDate: this.state.batchEndDate
-        },
-        trainingProcess: {
-          industryVisitCompleted: this.state.industryVisitCompleted,
-          ojtCompleted: this.state.ojtCompleted
-        },
-        trainingOutput: {
-          trainingStatus: this.state.trainingStatus,
-          attendencePercentage: this.state.attendencePercentage,
-          assessmentConducted: this.state.assessmentConducted,
-          certified: this.state.certified,
-          dateOfCoursePassing: this.state.dateOfCoursePassing,
-          dateOfIssuanceOfCertificate: this.state.dateOfIssuanceOfCertificate,
-          certificateNameOrAward: this.state.certificateNameOrAward,
-          grade: this.state.grade
+    const emailId = localStorage.getItem("emailId")
+    const role = localStorage.getItem("role")
+    const entitlement = localStorage.getItem("entitlement")
+    const traineeIdy = localStorage.getItem("traineeId")
+    if (role === "Admin") {
+      var data = {
+        training: {
+          traineeId: this.state.traineeId,
+          trainingId: this.state.trainingId,
+          comments: this.state.comments,
+          lastUpdateTimestamp: this.state.lastUpdateTimestamp,
+          creationTimestamp: this.state.creationTimestamp,
+          courseDetails: {
+            courseName: this.state.courseName,
+            sector: this.state.sector,
+            batchStartDate: this.state.batchStartDate,
+            batchEndDate: this.state.batchEndDate
+          },
+          trainingProcess: {
+            industryVisitCompleted: this.state.industryVisitCompleted,
+            ojtCompleted: this.state.ojtCompleted
+          },
+          trainingOutput: {
+            trainingStatus: this.state.trainingStatus,
+            attendencePercentage: this.state.attendencePercentage,
+            assessmentConducted: this.state.assessmentConducted,
+            certified: this.state.certified,
+            dateOfCoursePassing: this.state.dateOfCoursePassing,
+            dateOfIssuanceOfCertificate: this.state.dateOfIssuanceOfCertificate,
+            certificateNameOrAward: this.state.certificateNameOrAward,
+            grade: this.state.grade
+          }
         }
       }
     }
-
+    if (role === "Student") {
+      var data = {
+        training: {
+          traineeId: traineeIdy,
+          trainingId: this.state.trainingId,
+          comments: this.state.comments,
+          lastUpdateTimestamp: this.state.lastUpdateTimestamp,
+          creationTimestamp: this.state.creationTimestamp,
+          courseDetails: {
+            courseName: this.state.courseName,
+            sector: this.state.sector,
+            batchStartDate: this.state.batchStartDate,
+            batchEndDate: this.state.batchEndDate
+          },
+          trainingProcess: {
+            industryVisitCompleted: this.state.industryVisitCompleted,
+            ojtCompleted: this.state.ojtCompleted
+          },
+          trainingOutput: {
+            trainingStatus: this.state.trainingStatus,
+            attendencePercentage: this.state.attendencePercentage,
+            assessmentConducted: this.state.assessmentConducted,
+            certified: this.state.certified,
+            dateOfCoursePassing: this.state.dateOfCoursePassing,
+            dateOfIssuanceOfCertificate: this.state.dateOfIssuanceOfCertificate,
+            certificateNameOrAward: this.state.certificateNameOrAward,
+            grade: this.state.grade
+          }
+        }
+      }
+    }
     TrainingDataService.create(data)
       .then(response => {
         this.setState({
@@ -322,17 +358,25 @@ export default class AddTraining extends Component {
   }
 
   renderForm = () => {
+    const emailId = localStorage.getItem("emailId")
+    const role = localStorage.getItem("role")
+    const entitlement = localStorage.getItem("entitlement")
+    const traineeIdy = localStorage.getItem("traineeId")
     return (
       <>
         <div className="mb-3">
-          <CFormLabel htmlFor="exampleFormControlTextarea1">
-            {"Trainee Id : "}
+          {role !== "Student" ? (
+            <CFormLabel htmlFor="exampleFormControlTextarea1">
+              {"Trainee Id : "}
 
-            <CFormInput
-              value={this.state.traineeId}
-              onChange={this.onChangeTraineeId}
-            />
-          </CFormLabel>{" "}
+              <CFormInput
+                value={this.state.traineeId}
+                onChange={this.onChangeTraineeId}
+              />
+            </CFormLabel>
+          ) : (
+            ""
+          )}
           {/* <CFormLabel htmlFor="exampleFormControlTextarea2">
             {"Training Id : "}
 

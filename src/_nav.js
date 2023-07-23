@@ -77,88 +77,88 @@ const _nav = [
       {
         component: CNavItem,
         name: "Edit",
-        to: "/Trainee",
+        to: "/EditTrainee",
         icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
       }
     ]
   },
+  // {
+  //   component: CNavGroup,
+  //   name: "Trainer Management",
+  //   to: "/base",
+  //   icon: <CIcon icon={cilGroup} customClassName="nav-icon" />,
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       name: "View",
+  //       to: "/dashboard",
+  //       icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: "Add",
+  //       to: "/dashboard",
+  //       icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: "Edit",
+  //       to: "/dashboard",
+  //       icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
+  //     }
+  //   ]
+  // },
+  // {
+  //   component: CNavGroup,
+  //   name: "Notification Management",
+  //   to: "/base",
+  //   icon: <CIcon icon={cilEnvelopeClosed} customClassName="nav-icon" />,
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       name: "View",
+  //       to: "/dashboard",
+  //       icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: "Add",
+  //       to: "/dashboard",
+  //       icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: "Edit",
+  //       to: "/dashboard",
+  //       icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
+  //     }
+  //   ]
+  // },
   {
-    component: CNavGroup,
-    name: "Trainer Management",
-    to: "/base",
-    icon: <CIcon icon={cilGroup} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: "View",
-        to: "/dashboard",
-        icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
-      },
-      {
-        component: CNavItem,
-        name: "Add",
-        to: "/dashboard",
-        icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
-      },
-      {
-        component: CNavItem,
-        name: "Edit",
-        to: "/dashboard",
-        icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
-      }
-    ]
-  },
-  {
-    component: CNavGroup,
-    name: "Notification Management",
-    to: "/base",
-    icon: <CIcon icon={cilEnvelopeClosed} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: "View",
-        to: "/dashboard",
-        icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
-      },
-      {
-        component: CNavItem,
-        name: "Add",
-        to: "/dashboard",
-        icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
-      },
-      {
-        component: CNavItem,
-        name: "Edit",
-        to: "/dashboard",
-        icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
-      }
-    ]
-  },
-  {
-    component: CNavGroup,
+    component: CNavItem,
     name: "Access Management",
-    to: "/base",
-    icon: <CIcon icon={cilFingerprint} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: "View",
-        to: "/dashboard",
-        icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
-      },
-      {
-        component: CNavItem,
-        name: "Add",
-        to: "/dashboard",
-        icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
-      },
-      {
-        component: CNavItem,
-        name: "Edit",
-        to: "/dashboard",
-        icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
-      }
-    ]
+    to: "/AccessManagement",
+    icon: <CIcon icon={cilFingerprint} customClassName="nav-icon" />
+    // items: [
+    //   {
+    //     component: CNavItem,
+    //     name: "View",
+    //     to: "/dashboard",
+    //     icon: <CIcon icon={cilNotes} customClassName="nav-icon" />
+    //   },
+    //   {
+    //     component: CNavItem,
+    //     name: "Add",
+    //     to: "/dashboard",
+    //     icon: <CIcon icon={cilNoteAdd} customClassName="nav-icon" />
+    //   },
+    //   {
+    //     component: CNavItem,
+    //     name: "Edit",
+    //     to: "/AccessManagement",
+    //     icon: <CIcon icon={cilPencil} customClassName="nav-icon" />
+    //   }
+    // ]
   },
   {
     component: CNavItem,
@@ -166,16 +166,16 @@ const _nav = [
     to: "/Bulk",
     icon: <CIcon icon={cilArrowThickFromBottom} customClassName="nav-icon" />
   },
-  {
-    component: CNavItem,
-    name: "Activity Log",
-    to: "/charts",
-    icon: <CIcon icon={cilDescription} customClassName="nav-icon" />
-  },
+  // {
+  //   component: CNavItem,
+  //   name: "Activity Log",
+  //   to: "/charts",
+  //   icon: <CIcon icon={cilDescription} customClassName="nav-icon" />
+  // },
   {
     component: CNavItem,
     name: "Reports",
-    to: "/charts",
+    to: "/Reports",
     icon: <CIcon icon={cilFax} customClassName="nav-icon" />
   },
   {

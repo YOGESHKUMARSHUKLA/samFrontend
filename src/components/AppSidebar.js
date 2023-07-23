@@ -1,6 +1,7 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import logos from "../../src/assets/images/logo3.jpg"
+import PropTypes from "prop-types"
 
 import {
   CSidebar,
@@ -21,7 +22,7 @@ import "simplebar/dist/simplebar.min.css"
 // sidebar nav config
 import navigation from "../_nav"
 
-const AppSidebar = () => {
+const AppSidebar = ({ emailId, role, entitlement }) => {
   const dispatch = useDispatch()
   const unfoldable = useSelector(state => state.sidebarUnfoldable)
   const sidebarShow = useSelector(state => state.sidebarShow)
@@ -56,7 +57,12 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={navigation} />
+          <AppSidebarNav
+            items={navigation}
+            emailId={emailId}
+            role={role}
+            entitlement={entitlement}
+          />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
@@ -67,6 +73,12 @@ const AppSidebar = () => {
       />
     </CSidebar>
   )
+}
+
+AppSidebar.propTypes = {
+  emailId: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  entitlement: PropTypes.string.isRequired
 }
 
 export default React.memo(AppSidebar)

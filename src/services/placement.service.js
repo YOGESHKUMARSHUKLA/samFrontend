@@ -8,6 +8,10 @@ class TraineeDataService {
     return http.get(`/placement-details/placements/${id}`)
   }
 
+  getP(id) {
+    return http.get(`/placement-details/trainees/${id}/placements/`)
+  }
+
   create(data) {
     return http.post("/placement-details/placements", data)
   }

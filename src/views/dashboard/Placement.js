@@ -6,6 +6,7 @@ import { useState } from "react"
 import { CImage } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 import AddPlacement from "./AddPlacement"
+import EditPlacement from "./EditPlacement"
 import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
 import { Navigate, Route, Routes } from "react-router-dom"
@@ -86,13 +87,52 @@ const StudentProfile = () => {
       )
     })
   }
+  const EditPlac = item => {
+    // if (addFlag === false) {
+    localStorage.setItem("placId", item.placement.placementId)
+    return (
+      <div>
+        <CButton type="submit" className="mb-3">
+          <Link
+            to={"/EditPlacement"}
+            className="nav-link"
+            style={{ color: "white" }}
+            state={{ id: item.placement.placementId }}
+          >
+            {`Placement Number : ${item.placement.placementId}`}
+          </Link>
+        </CButton>
+        <Routes>
+          <Route path="/EditPlacement" element={<EditPlacement />} />
+        </Routes>
+      </div>
+    )
+    // }
+  }
 
   const renderForm = item => {
     // setAddFlag(true)
     return (
       <>
         <div className="mb-3">
-          <CFormLabel htmlFor="exampleFormControlInput1">
+          {EditPlac(item)}
+          {/* <CButton type="submit" className="mb-3">
+            <Link
+              to={"/EditPlacement"}
+              className="nav-link"
+              style={{ color: "white" }}
+              state={{ id: item.placement.placementId }}
+            >
+              {`Placement Number : ${item.placement.placementId}`}
+            </Link>
+          </CButton>
+          <Routes>
+            <Route path="/EditPlacement" element={<EditPlacement />} />
+          </Routes>{" "} */}
+          {/* <CButton className="mb-3">
+            {`Placement Number : ${item.placement.placementId}`}
+          </CButton>{" "} */}
+          {/* <CFormLabel htmlFor="exampleFormControlInput1">
             {"Placement Id : "}
 
             <CFormInput
@@ -102,7 +142,7 @@ const StudentProfile = () => {
               placeholder="name@example.com"
               value={item.placement.placementId}
             />
-          </CFormLabel>{" "}
+          </CFormLabel>{" "} */}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
             {"EmploymentMethod : "}
 

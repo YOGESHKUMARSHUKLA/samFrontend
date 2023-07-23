@@ -7,6 +7,7 @@ import avatar1 from "src/assets/images/avatars/1.jpg"
 import CIcon from "@coreui/icons-react"
 import { cilLockLocked, cilUser } from "@coreui/icons"
 import { Link } from "react-router-dom"
+import PropTypes from "prop-types"
 import {
   CFormLabel,
   CFormTextarea,
@@ -47,6 +48,7 @@ export default class AddPlacement extends Component {
 
     this.onChangePlacementId = this.onChangePlacementId.bind(this)
     this.onChangeTraineeId = this.onChangeTraineeId.bind(this)
+    // this.onChangeTraineeIdi = this.onChangeTraineeIdi.bind(this)
     this.onChangePlacementStatus = this.onChangePlacementStatus.bind(this)
     this.onChangeDateOfPlacement = this.onChangeDateOfPlacement.bind(this)
 
@@ -69,6 +71,9 @@ export default class AddPlacement extends Component {
     this.onChangeLastUpdateTimestamp =
       this.onChangeLastUpdateTimestamp.bind(this)
     this.onChangeCreationTimestamp = this.onChangeCreationTimestamp.bind(this)
+    this.onChangereasonOfUnemployment =
+      this.onChangereasonOfUnemployment.bind(this)
+    this.onChangeComments = this.onChangeComments.bind(this)
 
     this.state = {
       placement: {
@@ -88,6 +93,8 @@ export default class AddPlacement extends Component {
           locationOfEmployment: "",
           annualCtc: " ",
           lastUpdateTimestamp: "",
+          reasonOfUnemployment: "",
+          comments: "",
           creationTimestamp: ""
         }
       },
@@ -178,27 +185,73 @@ export default class AddPlacement extends Component {
     })
   }
 
+  onChangereasonOfUnemployment(e) {
+    this.setState({
+      reasonOfUnemployment: e.target.value
+    })
+  }
+  onChangeComments(e) {
+    this.setState({
+      comments: e.target.value
+    })
+  }
+
   savePlacement() {
-    var data = {
-      placement: {
-        placementId: this.state.placementId,
-        traineeId: this.state.traineeId,
-        placementDetails: {
-          placementStatus: this.state.placementStatus,
-          dateOfPlacement: this.state.dateOfPlacement,
-          placementSector: this.state.placementSector,
-          sectorNameIfDifferent: this.state.sectorNameIfDifferent,
-          employmentMethod: this.state.employmentMethod,
-          jobRole: this.state.jobRole,
-          employerName: this.state.employerName,
-          nameOfPointPersonFromEmployer:
-            this.state.nameOfPointPersonFromEmployer,
-          contactNumberOfPointPerson: this.state.contactNumberOfPointPerson,
-          employerEmailId: this.state.employerEmailId,
-          locationOfEmployment: this.state.locationOfEmployment,
-          annualCtc: this.state.annualCtc,
-          lastUpdateTimestamp: this.state.lastUpdateTimestamp,
-          creationTimestamp: this.state.creationTimestamp
+    const emailId = localStorage.getItem("emailId")
+    const role = localStorage.getItem("role")
+    const entitlement = localStorage.getItem("entitlement")
+    const traineeIdy = localStorage.getItem("traineeId")
+    if (role === "Admin") {
+      var data = {
+        placement: {
+          placementId: this.state.placementId,
+          traineeId: this.state.traineeId,
+          placementDetails: {
+            placementStatus: this.state.placementStatus,
+            dateOfPlacement: this.state.dateOfPlacement,
+            placementSector: this.state.placementSector,
+            sectorNameIfDifferent: this.state.sectorNameIfDifferent,
+            employmentMethod: this.state.employmentMethod,
+            jobRole: this.state.jobRole,
+            employerName: this.state.employerName,
+            nameOfPointPersonFromEmployer:
+              this.state.nameOfPointPersonFromEmployer,
+            contactNumberOfPointPerson: this.state.contactNumberOfPointPerson,
+            employerEmailId: this.state.employerEmailId,
+            locationOfEmployment: this.state.locationOfEmployment,
+            annualCtc: this.state.annualCtc,
+            lastUpdateTimestamp: this.state.lastUpdateTimestamp,
+            reasonOfUnemployment: this.state.reasonOfUnemployment,
+            comments: this.state.comments,
+            creationTimestamp: this.state.creationTimestamp
+          }
+        }
+      }
+    }
+    if (role === "Student") {
+      var data = {
+        placement: {
+          placementId: this.state.placementId,
+          traineeId: traineeIdy,
+          placementDetails: {
+            placementStatus: this.state.placementStatus,
+            dateOfPlacement: this.state.dateOfPlacement,
+            placementSector: this.state.placementSector,
+            sectorNameIfDifferent: this.state.sectorNameIfDifferent,
+            employmentMethod: this.state.employmentMethod,
+            jobRole: this.state.jobRole,
+            employerName: this.state.employerName,
+            nameOfPointPersonFromEmployer:
+              this.state.nameOfPointPersonFromEmployer,
+            contactNumberOfPointPerson: this.state.contactNumberOfPointPerson,
+            employerEmailId: this.state.employerEmailId,
+            locationOfEmployment: this.state.locationOfEmployment,
+            annualCtc: this.state.annualCtc,
+            lastUpdateTimestamp: this.state.lastUpdateTimestamp,
+            reasonOfUnemployment: this.state.reasonOfUnemployment,
+            comments: this.state.comments,
+            creationTimestamp: this.state.creationTimestamp
+          }
         }
       }
     }
@@ -225,6 +278,8 @@ export default class AddPlacement extends Component {
               locationOfEmployment: response.data.locationOfEmployment,
               annualCtc: response.data.annualCtc,
               lastUpdateTimestamp: response.data.lastUpdateTimestamp,
+              reasonOfUnemployment: response.data.reasonOfUnemployment,
+              comments: response.data.comments,
               creationTimestamp: response.data.creationTimestamp
             }
           },
@@ -256,6 +311,8 @@ export default class AddPlacement extends Component {
           locationOfEmployment: "",
           annualCtc: "",
           lastUpdateTimestamp: "",
+          reasonOfUnemployment: "",
+          comments: "",
           creationTimestamp: ""
         }
       },
@@ -264,23 +321,46 @@ export default class AddPlacement extends Component {
   }
 
   renderForm = item => {
+    const emailId = localStorage.getItem("emailId")
+    const role = localStorage.getItem("role")
+    const entitlement = localStorage.getItem("entitlement")
+    const traineeIdy = localStorage.getItem("traineeId")
     return (
       <>
         <div className="mb-3">
-          <CFormLabel htmlFor="exampleFormControlInput1">
-            {"Trainee Id : "}
+          {role !== "Student" ? (
+            <CFormLabel htmlFor="exampleFormControlInput1">
+              {"Trainee Id : "}
 
-            <CFormInput
-              type="text"
-              placeholder=""
-              id="traineeId"
-              required
-              value={this.state.traineeId}
-              onChange={this.onChangeTraineeId}
-              name="traineeId"
-              //value={""}
-            />
-          </CFormLabel>{" "}
+              <CFormInput
+                type="text"
+                placeholder={item}
+                id="traineeId"
+                required
+                value={this.state.traineeId}
+                onChange={this.onChangeTraineeId}
+                name="traineeId"
+                // readOnly
+                //value={""}
+              />
+            </CFormLabel>
+          ) : (
+            <CFormLabel htmlFor="exampleFormControlInput1">
+              {"Trainee Id : "}
+
+              <CFormInput
+                type="text"
+                placeholder={item}
+                id="traineeId"
+                required
+                value={this.state.traineeId}
+                onChange={this.onChangeTraineeId}
+                name="traineeId"
+                readOnly
+                //value={""}
+              />
+            </CFormLabel>
+          )}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
             {"Employment Method : "}
 
@@ -426,6 +506,30 @@ export default class AddPlacement extends Component {
             />
           </CFormLabel>{" "}
           <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"Reason Of Employment : "}
+
+            <CFormInput
+              placeholder=""
+              id="reasonOfUnemployment"
+              required
+              value={this.state.reasonOfUnemployment}
+              onChange={this.onChangereasonOfUnemployment}
+              name="reasonOfUnemployment"
+            />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
+            {"Comments : "}
+
+            <CFormInput
+              placeholder=""
+              id="com"
+              required
+              value={this.state.comments}
+              onChange={this.onChangeComments}
+              name="com"
+            />
+          </CFormLabel>{" "}
+          <CFormLabel htmlFor="exampleFormControlTextarea1">
             {"Last Update Timestamp: "}
 
             <CFormInput
@@ -468,6 +572,12 @@ export default class AddPlacement extends Component {
     )
   }
   render() {
+    const { traineeIdii } = this.props
+
+    // console.log("traiiin", traineeId)
+    // this.onChangeTraineeIdi(traineeId)
+    // console.log("trayyyyiiin", this.state.traineeIdi)
+    // this.setState(traineeId)
     return (
       <div className="container">
         <div className="submit-form">
@@ -500,7 +610,7 @@ export default class AddPlacement extends Component {
                             PIC
                           </CAvatar>
                         </Col>
-                        {this.renderForm()}
+                        {this.renderForm(traineeIdii)}
                       </Row>
                       {/* Rest of the profile information */}
                     </CardBody>
@@ -513,4 +623,8 @@ export default class AddPlacement extends Component {
       </div>
     )
   }
+}
+AddPlacement.propTypes = {
+  traineeId: PropTypes.string.isRequired
+  // Add other prop types here if needed
 }
