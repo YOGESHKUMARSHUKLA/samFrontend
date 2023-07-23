@@ -199,9 +199,7 @@ export default class EditTrainee extends Component {
       const response = await GoogleDataService.getAll()
       console.log(response.data[0][1].id)
       const images = response.data[0]
-        .filter(
-          item => item.id === `${this.state.traineeId}_post.jpeg`
-        )
+        .filter(item => item.id === `${this.state.traineeId}_post.jpeg`)
         .map(item => ({
           id: item.id,
           url: `https://storage.googleapis.com/sams-bulk-upload-start/${item.id}` // Replace with the actual URL format for your images
@@ -296,9 +294,7 @@ export default class EditTrainee extends Component {
       const response = await GoogleDataService.getAll()
       console.log(response.data[0][1].id)
       const images = response.data[0]
-        .filter(
-          item => item.id === `${this.state.traineeId}_post.jpeg`
-        )
+        .filter(item => item.id === `${this.state.traineeId}_post.jpeg`)
         .map(item => ({
           id: item.id,
           url: `https://storage.googleapis.com/sams-bulk-upload-start/${item.id}` // Replace with the actual URL format for your images
