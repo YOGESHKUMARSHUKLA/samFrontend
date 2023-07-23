@@ -120,7 +120,7 @@ export default class AddTrainee extends Component {
       alert("Please select a file.")
       return
     }
-    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app/`
+    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app/upload`
     const headers = {
       "Content-Type": "multipart/form-data",
       // "Content-type": "application/json",
@@ -174,7 +174,7 @@ export default class AddTrainee extends Component {
       alert("Please select a file.")
       return
     }
-    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app`
+    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app/upload`
     const headers = {
       "Content-Type": "multipart/form-data",
       // "Content-type": "application/json",
