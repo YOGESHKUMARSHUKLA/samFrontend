@@ -20,12 +20,32 @@ import {
   cilTask,
   cilUser
 } from "@coreui/icons"
+import { CButton } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 
 import avatar8 from "./../../assets/images/avatars/8.jpg"
 
 const AppHeaderDropdown = () => {
   const traineeId = localStorage.getItem("traineeId")
+
+  const sub = () => {
+    {
+      localStorage.removeItem("emailId")
+    }
+    {
+      localStorage.removeItem("role")
+    }
+    {
+      localStorage.removeItem("entitlement")
+    }
+    {
+      localStorage.removeItem("traineeId")
+    }
+    {
+      window.location.href = "https://frontendcode-ba3cryd7aq-df.a.run.app"
+    }
+  }
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
@@ -93,8 +113,10 @@ const AppHeaderDropdown = () => {
         </CDropdownItem>
         <CDropdownDivider /> */}
         <CDropdownItem href="#">
-          <CIcon icon={cilLockLocked} className="me-2" />
-          Lock Account
+          <CButton onClick={sub} className="mb-3">
+            <CIcon icon={cilLockLocked} className="me-2" />
+            Log Off
+          </CButton>
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

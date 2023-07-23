@@ -542,26 +542,26 @@ const Reports = () => {
                               <CTableDataCell className="text-center">
                                 <CAvatar
                                   size="md"
-                                  src={
-                                    item.trainee.traineeId % 10 == 1
-                                      ? avatar1
-                                      : item.trainee.traineeId % 10 == 2
-                                      ? avatar2
-                                      : item.trainee.traineeId % 10 == 3
-                                      ? avatar3
-                                      : item.trainee.traineeId % 10 == 4
-                                      ? avatar4
-                                      : item.trainee.traineeId % 10 == 5
-                                      ? avatar5
-                                      : item.trainee.traineeId % 10 == 6
-                                      ? avatar6
-                                      : item.trainee.traineeId % 10 == 7
-                                      ? avatar7
-                                      : item.trainee.traineeId % 10 == 8
-                                      ? avatar8
-                                      : avatar9
-                                  }
-                                  // src={`src/assets/images/avatars/${item.trainee.traineeId}.jpg`}
+                                  src={`https://storage.googleapis.com/sams-bulk-upload-start/${item.trainee.traineeId}_post.jpeg`}
+                                  // src={
+                                  //   item.trainee.traineeId % 10 == 1
+                                  //     ? avatar1
+                                  //     : item.trainee.traineeId % 10 == 2
+                                  //     ? avatar2
+                                  //     : item.trainee.traineeId % 10 == 3
+                                  //     ? avatar3
+                                  //     : item.trainee.traineeId % 10 == 4
+                                  //     ? avatar4
+                                  //     : item.trainee.traineeId % 10 == 5
+                                  //     ? avatar5
+                                  //     : item.trainee.traineeId % 10 == 6
+                                  //     ? avatar6
+                                  //     : item.trainee.traineeId % 10 == 7
+                                  //     ? avatar7
+                                  //     : item.trainee.traineeId % 10 == 8
+                                  //     ? avatar8
+                                  //     : avatar9
+                                  // }
                                   status="success"
                                 />
                               </CTableDataCell>
