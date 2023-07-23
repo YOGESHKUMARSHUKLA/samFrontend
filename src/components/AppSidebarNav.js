@@ -27,7 +27,7 @@ export const AppSidebarNav = ({ items, emailId, role, entitlement }) => {
   const navItem = (item, index) => {
     const { component, name, badge, icon, ...rest } = item
     const Component = component
-    if (role === "Student") {
+    if (role === "Admin") {
       return (
         <>
           <Component
@@ -49,7 +49,7 @@ export const AppSidebarNav = ({ items, emailId, role, entitlement }) => {
       )
     }
     if (
-      role === "Admin" &&
+      role === "Student" &&
       item.name !== "Access Management" &&
       item.name !== "Bulk Upload" &&
       item.name !== "Activity Log" &&
