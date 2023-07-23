@@ -27,13 +27,13 @@ export default class AddTrainee extends Component {
         .filter(item => item.id.includes("jpeg"))
         .map(item => ({
           id: item.id,
-          url: `https://storage.googleapis.com/storagesam/${item.id}` // Replace with the actual URL format for your images
+          url: `https://storage.googleapis.com/sams-bulk-upload-start/${item.id}` // Replace with the actual URL format for your images
         }))
       const csvs = response.data[0]
         .filter(item => item.id.includes("csv"))
         .map(item => ({
           id: item.id,
-          url: `https://storage.googleapis.com/storagesam/${item.id}` // Replace with the actual URL format for your images
+          url: `https://storage.googleapis.com/sams-bulk-upload-start/${item.id}` // Replace with the actual URL format for your images
         }))
 
       this.setState({ images })
@@ -61,7 +61,7 @@ export default class AddTrainee extends Component {
       (
         c ^
         (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-      ).toString(16)
+      ).toString(8)
     )
   }
   handleFileUpload = async () => {
@@ -70,7 +70,7 @@ export default class AddTrainee extends Component {
       alert("Please select a file.")
       return
     }
-    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app/upload`
+    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app/`
     const headers = {
       "Content-Type": "multipart/form-data",
       // "Content-type": "application/json",
@@ -120,7 +120,7 @@ export default class AddTrainee extends Component {
       alert("Please select a file.")
       return
     }
-    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app/upload`
+    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app/`
     const headers = {
       "Content-Type": "multipart/form-data",
       // "Content-type": "application/json",
@@ -174,7 +174,7 @@ export default class AddTrainee extends Component {
       alert("Please select a file.")
       return
     }
-    const url = `http://localhost:8080/upload`
+    const url = `https://samnodebackend-ba3cryd7aq-df.a.run.app`
     const headers = {
       "Content-Type": "multipart/form-data",
       // "Content-type": "application/json",
@@ -190,9 +190,13 @@ export default class AddTrainee extends Component {
       console.log(filez)
       // Create new file so we can rename the file
       let blob = filez.slice(0, filez.size, "text/csv")
-      const newFile = new File([blob], `${postid}_post.csv`, {
-        type: "text/csv"
-      })
+      const newFile = new File(
+        [blob],
+        `PBMA_HistoricalData${postid}_post.csv`,
+        {
+          type: "text/csv"
+        }
+      )
       console.log(newFile)
       // Build the form data - You can add other input values to this i.e descriptions, make sure img is appended last
       const formData = new FormData()
