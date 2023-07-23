@@ -11,21 +11,13 @@ import {
   CInputGroupText,
   CFormCheck,
   CAlert,
-  CDropdown,
-  CDropdownToggle,
-  CDropdownMenu,
-  CDropdownItem,
   CFormSelect,
   CRow
 } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
-import { cilLockLocked, cilUser } from "@coreui/icons"
+import { cilLockLocked } from "@coreui/icons"
 import { initializeApp } from "firebase/app"
-import {
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  getAuth
-} from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"
 import TraineeDataService from "src/services/trainee.service.js"
 import EntitlementService from "src/services/entitlement.service.js"
 import { useNavigate } from "react-router-dom"
@@ -91,7 +83,7 @@ const Register = () => {
     const response = await EntitlementService.create(data)
       .then(response => {
         console.log(response.data)
-        navigate("/dashboard")
+        navigate("/Page404")
       })
       .catch(e => {
         console.log(e)
@@ -100,7 +92,7 @@ const Register = () => {
   useEffect(() => {
     console.log("use effect trainee update")
     console.log(trainees)
-    if (emailId != "") {
+    if (emailId !== "") {
       saveEntitlement()
     }
   }, [trainees])
@@ -134,7 +126,7 @@ const Register = () => {
     console.log(userExisting)
     console.log(identifier)
     console.log(identifyingNumber)
-    if (password != confirmpassword) {
+    if (password !== confirmpassword) {
       console.log("Password mismatch")
       setRegistrationError(true)
     } else {

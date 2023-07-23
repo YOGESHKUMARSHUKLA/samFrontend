@@ -174,6 +174,13 @@ const Trainee = ({ emailId, role, entitlement, password, traineeId }) => {
                                 <CTableDataCell className="text-center">
                                   <CAvatar
                                     size="md"
+                                    // src={`src/assets/images/avatars/${item.trainee.traineeId}.jpg`}
+                                    src={`https://storage.googleapis.com/sams-bulk-upload-start/${item.trainee.traineeId}_post.jpeg`}
+                                    alt="Avatar"
+                                  />
+                                  ;
+                                  {/* <CAvatar
+                                    size="md"
                                     src={
                                       item.trainee.traineeId % 10 == 1
                                         ? avatar1
@@ -193,9 +200,9 @@ const Trainee = ({ emailId, role, entitlement, password, traineeId }) => {
                                         ? avatar8
                                         : avatar9
                                     }
-                                    // src={`src/assets/images/avatars/${item.trainee.traineeId}.jpg`}
+                                     src={`src/assets/images/avatars/${item.trainee.traineeId}.jpg`}
                                     status="success"
-                                  />
+                                  /> */}
                                 </CTableDataCell>
                                 <CTableDataCell>
                                   <strong>{item.trainee.traineeId}</strong>
@@ -437,6 +444,12 @@ const Trainee = ({ emailId, role, entitlement, password, traineeId }) => {
                                 <CTableDataCell className="text-center">
                                   <CAvatar
                                     size="md"
+                                    // src={`src/assets/images/avatars/${item.trainee.traineeId}.jpg`}
+                                    src={`https://storage.googleapis.com/sams-bulk-upload-start/${item.trainee.traineeId}_post.jpeg`}
+                                    alt="Avatar"
+                                  />
+                                  {/* <CAvatar
+                                    size="md"
                                     src={
                                       item.trainee.traineeId % 10 == 1
                                         ? avatar1
@@ -456,9 +469,8 @@ const Trainee = ({ emailId, role, entitlement, password, traineeId }) => {
                                         ? avatar8
                                         : avatar9
                                     }
-                                    // src={`src/assets/images/avatars/${item.trainee.traineeId}.jpg`}
                                     status="success"
-                                  />
+                                  /> */}
                                 </CTableDataCell>
                                 <CTableDataCell>
                                   <strong>{item.trainee.traineeId}</strong>

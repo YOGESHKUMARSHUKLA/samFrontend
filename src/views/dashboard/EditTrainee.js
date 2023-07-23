@@ -239,32 +239,40 @@ export default class EditTrainee extends Component {
           familyEconomicStatus: res.data.trainee.familyEconomicStatus,
           dateOfBirth: res.data.trainee.dateOfBirth,
           traineeId: res.data.trainee.traineeId,
-          numberOfFamilyMembers: res.data.trainee.nameOfEducationalInstitute,
+          numberOfFamilyMembers: res.data.trainee.numberOfFamilyMembers,
           disabilityDetails: {
-            pwdCertificate: res.data.trainee.pwdCertificate,
-            typeOfDisability: res.data.trainee.typeOfDisability
+            pwdCertificate: res.data.trainee.disabilityDetails.pwdCertificate,
+            typeOfDisability:
+              res.data.trainee.disabilityDetails.typeOfDisability
           },
           implementingPartnerDetails: {
-            partnerName: res.data.trainee.partnerName,
-            centreAddress: res.data.trainee.centreAddress,
-            centreLocation: res.data.trainee.centreLocation
+            partnerName:
+              res.data.trainee.implementingPartnerDetails.partnerName,
+            centreAddress:
+              res.data.trainee.implementingPartnerDetails.centreAddress,
+            centreLocation:
+              res.data.trainee.implementingPartnerDetails.centreLocation
           },
           nameOfTrainee: res.data.trainee.nameOfTrainee,
           lastUpdateTimestamp: res.data.trainee.lastUpdateTimestamp,
           nameOfTrainee: res.data.trainee.nameOfTrainee,
           identificationDetails: {
-            pincode: res.data.trainee.pincode,
-            aadharNumber: res.data.trainee.aadharNumber,
-            mobileNumber: res.data.trainee.mobileNumber,
-            traineeAddress: res.data.trainee.traineeAddress,
-            typeOfIdentification: res.data.trainee.typeOfIdentification,
-            district: res.data.trainee.district,
-            alternateContactNumber: res.data.trainee.alternateContactNumber,
-            emailId: res.data.trainee.emailId,
-            panNumber: res.data.trainee.panNumber,
-            state: res.data.trainee.state,
-            voterIdNumber: res.data.trainee.voterIdNumber,
-            guardianContactNumber: res.data.trainee.guardianContactNumber
+            pincode: res.data.trainee.identificationDetails.pincode,
+            aadharNumber: res.data.trainee.identificationDetails.aadharNumber,
+            mobileNumber: res.data.trainee.identificationDetails.mobileNumber,
+            traineeAddress:
+              res.data.trainee.identificationDetails.traineeAddress,
+            typeOfIdentification:
+              res.data.trainee.identificationDetails.typeOfIdentification,
+            district: res.data.trainee.identificationDetails.district,
+            alternateContactNumber:
+              res.data.trainee.identificationDetails.alternateContactNumber,
+            emailId: res.data.trainee.identificationDetails.emailId,
+            panNumber: res.data.trainee.identificationDetails.panNumber,
+            state: res.data.trainee.identificationDetails.state,
+            voterIdNumber: res.data.trainee.identificationDetails.voterIdNumber,
+            guardianContactNumber:
+              res.data.trainee.identificationDetails.guardianContactNumber
           },
           sourceOfHouseholdIncome: res.data.trainee.sourceOfHouseholdIncome,
           nameOfGuardian: res.data.trainee.nameOfGuardian,
@@ -273,10 +281,14 @@ export default class EditTrainee extends Component {
           nameOfEducationalInstitute:
             res.data.trainee.nameOfEducationalInstitute,
           preTrainingDetails: {
-            preJoiningCounselling: res.data.trainee.preJoiningCounselling,
-            preTrainingEmploymentStatus: res.data.trainee.preTrainingDetails,
-            currentEmploymentStatus: res.data.trainee.currentEmploymentStatus,
-            mobilisationTechnique: res.data.trainee.mobilisationTechnique
+            preJoiningCounselling:
+              res.data.trainee.preTrainingDetails.preJoiningCounselling,
+            preTrainingEmploymentStatus:
+              res.data.trainee.preTrainingDetails.preTrainingEmploymentStatus,
+            currentEmploymentStatus:
+              res.data.trainee.preTrainingDetails.currentEmploymentStatus,
+            mobilisationTechnique:
+              res.data.trainee.preTrainingDetails.mobilisationTechnique
           },
           salutation: res.data.trainee.salutation,
           traineeAnnualIncome: res.data.trainee.traineeAnnualIncome,
@@ -881,8 +893,7 @@ export default class EditTrainee extends Component {
             familyEconomicStatus: response.data.trainee.familyEconomicStatus,
             dateOfBirth: response.data.trainee.dateOfBirth,
             traineeId: response.data.trainee.traineeId,
-            numberOfFamilyMembers:
-              response.data.trainee.nameOfEducationalInstitute,
+            numberOfFamilyMembers: response.data.trainee.numberOfFamilyMembers,
             disabilityDetails: {
               pwdCertificate: response.data.trainee.pwdCertificate,
               typeOfDisability: response.data.trainee.typeOfDisability
@@ -919,12 +930,15 @@ export default class EditTrainee extends Component {
               response.data.trainee.nameOfEducationalInstitute,
             preTrainingDetails: {
               preJoiningCounselling:
-                response.data.trainee.preJoiningCounselling,
+                response.data.trainee.preTrainingDetails.preJoiningCounselling,
               preTrainingEmploymentStatus:
-                response.data.trainee.preTrainingDetails,
+                response.data.trainee.preTrainingDetails
+                  .preTrainingEmploymentStatus,
               currentEmploymentStatus:
-                response.data.trainee.currentEmploymentStatus,
-              mobilisationTechnique: response.data.trainee.mobilisationTechnique
+                response.data.trainee.preTrainingDetails
+                  .currentEmploymentStatus,
+              mobilisationTechnique:
+                response.data.trainee.preTrainingDetails.mobilisationTechnique
             },
             salutation: response.data.trainee.salutation,
             traineeAnnualIncome: response.data.trainee.traineeAnnualIncome,
@@ -936,7 +950,7 @@ export default class EditTrainee extends Component {
           },
           submitted: true
         })
-        console.log(response.data)
+        console.log("Respnse data : ", response.data)
       })
       .catch(e => {
         console.log(e)
@@ -1030,7 +1044,9 @@ export default class EditTrainee extends Component {
               id="exampleFormControlInput1"
               //   placeholder="name@example.com"
               value={this.state.typeOfIdentification}
-              placeholder={this.state.trainee.typeOfIdentification}
+              placeholder={
+                this.state.trainee.identificationDetails.typeOfIdentification
+              }
               onChange={this.onChangetypeOfIdentification}
             />
           </CFormLabel>{" "}
@@ -1147,7 +1163,7 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.pwdCertificate}
-              placeholder={this.state.trainee.pwdCertificate}
+              placeholder={this.state.trainee.disabilityDetails.pwdCertificate}
               onChange={this.onChangePwdCertificate}
             />
           </CFormLabel>{" "}
@@ -1156,7 +1172,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.typeOfDisability}
-              placeholder={this.state.trainee.typeOfDisability}
+              placeholder={
+                this.state.trainee.disabilityDetails.typeOfDisability
+              }
               onChange={this.onChangeTypeOfDisability}
             />
           </CFormLabel>{" "}
@@ -1165,7 +1183,7 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.pincode}
-              placeholder={this.state.trainee.pincode}
+              placeholder={this.state.trainee.identificationDetails.pincode}
               onChange={this.onChangePincode}
             />
           </CFormLabel>{" "}
@@ -1174,7 +1192,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.aadharNumber}
-              placeholder={this.state.trainee.aadharNumber}
+              placeholder={
+                this.state.trainee.identificationDetails.aadharNumber
+              }
               onChange={this.onChangeAadharNumber}
             />
           </CFormLabel>{" "}
@@ -1183,7 +1203,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.mobileNumber}
-              placeholder={this.state.trainee.mobileNumber}
+              placeholder={
+                this.state.trainee.identificationDetails.mobileNumber
+              }
               onChange={this.onChangemobileNumber}
             />
           </CFormLabel>{" "}
@@ -1192,7 +1214,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.traineeAddress}
-              placeholder={this.state.trainee.traineeAddress}
+              placeholder={
+                this.state.trainee.identificationDetails.traineeAddress
+              }
               onChange={this.onChangetraineeAddress}
             />
           </CFormLabel>{" "}
@@ -1201,7 +1225,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.alternateContactNumber}
-              placeholder={this.state.trainee.alternateContactNumber}
+              placeholder={
+                this.state.trainee.identificationDetails.alternateContactNumber
+              }
               onChange={this.onChangealternateContactNumber}
             />
           </CFormLabel>{" "}
@@ -1210,7 +1236,7 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.district}
-              placeholder={this.state.trainee.district}
+              placeholder={this.state.trainee.identificationDetails.district}
               onChange={this.onChangedistrict}
             />
           </CFormLabel>{" "}
@@ -1219,7 +1245,7 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.emailId}
-              placeholder={this.state.trainee.emailId}
+              placeholder={this.state.trainee.identificationDetails.emailId}
               onChange={this.onChangeemailId}
             />
           </CFormLabel>{" "}
@@ -1228,7 +1254,7 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.panNumber}
-              placeholder={this.state.trainee.panNumber}
+              placeholder={this.state.trainee.identificationDetails.panNumber}
               onChange={this.onChangepanNumber}
             />
           </CFormLabel>{" "}
@@ -1237,7 +1263,7 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.state}
-              placeholder={this.state.trainee.state}
+              placeholder={this.state.trainee.identificationDetails.state}
               onChange={this.onChangestate}
             />
           </CFormLabel>{" "}
@@ -1246,7 +1272,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.voterIdNumber}
-              placeholder={this.state.trainee.voterIdNumber}
+              placeholder={
+                this.state.trainee.identificationDetails.voterIdNumber
+              }
               onChange={this.onChangevoterIdNumber}
             />
           </CFormLabel>{" "}
@@ -1255,7 +1283,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.guardianContactNumber}
-              placeholder={this.state.trainee.guardianContactNumber}
+              placeholder={
+                this.state.trainee.identificationDetails.guardianContactNumber
+              }
               onChange={this.onChangeguardianContactNumber}
             />
           </CFormLabel>{" "}
@@ -1273,7 +1303,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.preJoiningCounselling}
-              placeholder={this.state.trainee.preJoiningCounselling}
+              placeholder={
+                this.state.trainee.preTrainingDetails.preJoiningCounselling
+              }
               onChange={this.onChangepreJoiningCounselling}
             />
           </CFormLabel>{" "}
@@ -1282,7 +1314,10 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.preTrainingEmploymentStatus}
-              placeholder={this.state.trainee.preTrainingEmploymentStatus}
+              placeholder={
+                this.state.trainee.preTrainingDetails
+                  .preTrainingEmploymentStatus
+              }
               onChange={this.onChangepreTrainingEmploymentStatus}
             />
           </CFormLabel>{" "}
@@ -1291,7 +1326,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.currentEmploymentStatus}
-              placeholder={this.state.trainee.currentEmploymentStatus}
+              placeholder={
+                this.state.trainee.preTrainingDetails.currentEmploymentStatus
+              }
               onChange={this.onChangecurrentEmploymentStatus}
             />
           </CFormLabel>{" "}
@@ -1300,7 +1337,9 @@ export default class EditTrainee extends Component {
 
             <CFormInput
               value={this.state.mobilisationTechnique}
-              placeholder={this.state.trainee.mobilisationTechnique}
+              placeholder={
+                this.state.trainee.preTrainingDetails.mobilisationTechnique
+              }
               onChange={this.onChangemobilisationTechnique}
             />
           </CFormLabel>{" "}

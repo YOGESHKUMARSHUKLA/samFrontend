@@ -394,25 +394,26 @@ const StudentProfile = props => {
                     <CImage
                       align="center"
                       rounded
-                      src={
-                        (employeeId != null ? employeeId.id : 1) % 10 == 1
-                          ? avatar1
-                          : (employeeId != null ? employeeId.id : 1) % 10 == 2
-                          ? avatar2
-                          : (employeeId != null ? employeeId.id : 1) % 10 == 3
-                          ? avatar3
-                          : (employeeId != null ? employeeId.id : 1) % 10 == 4
-                          ? avatar4
-                          : (employeeId != null ? employeeId.id : 1) % 10 == 5
-                          ? avatar5
-                          : (employeeId != null ? employeeId.id : 1) % 10 == 6
-                          ? avatar6
-                          : (employeeId != null ? employeeId.id : 1) % 10 == 7
-                          ? avatar7
-                          : (employeeId != null ? employeeId.id : 1) % 10 == 8
-                          ? avatar8
-                          : avatar9
-                      }
+                      src={`https://storage.googleapis.com/sams-bulk-upload-start/${employeeId.id}_post.jpeg`}
+                      // src={
+                      //   (employeeId != null ? employeeId.id : 1) % 10 == 1
+                      //     ? avatar1
+                      //     : (employeeId != null ? employeeId.id : 1) % 10 == 2
+                      //     ? avatar2
+                      //     : (employeeId != null ? employeeId.id : 1) % 10 == 3
+                      //     ? avatar3
+                      //     : (employeeId != null ? employeeId.id : 1) % 10 == 4
+                      //     ? avatar4
+                      //     : (employeeId != null ? employeeId.id : 1) % 10 == 5
+                      //     ? avatar5
+                      //     : (employeeId != null ? employeeId.id : 1) % 10 == 6
+                      //     ? avatar6
+                      //     : (employeeId != null ? employeeId.id : 1) % 10 == 7
+                      //     ? avatar7
+                      //     : (employeeId != null ? employeeId.id : 1) % 10 == 8
+                      //     ? avatar8
+                      //     : avatar9
+                      // }
                       width={200}
                       height={200}
                     />

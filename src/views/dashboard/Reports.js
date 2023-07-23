@@ -311,18 +311,23 @@ const Reports = () => {
     dat.forEach((item, index) => {
       const rowData = [
         item.trainee.traineeId,
-        `${item.trainee?.technicalEducation ?? ""} ${
+        item.trainee.nameOfTrainee,
+        `Education : ${item.trainee?.technicalEducation ?? ""} Institute : ${
           item.trainee?.nameOfEducationalInstitute ?? ""
         }`,
-        `${item.trainee.disabilityDetails?.pwdCertificate ?? ""} ${
-          item.trainee.disabilityDetails?.typeOfDisability ?? ""
+        `Certificate : ${
+          item.trainee.disabilityDetails?.pwdCertificate ?? ""
+        } Type : ${item.trainee.disabilityDetails?.typeOfDisability ?? ""}`,
+        `Aadhar: ${
+          item.trainee.identificationDetails?.aadharNumber ?? ""
+        }  PAN: ${item.trainee.identificationDetails?.panNumber ?? ""}VotId:  ${
+          item.trainee.identificationDetails?.voterIdNumber ?? ""
         }`,
-        `${item.trainee.identificationDetails?.aadharNumber ?? ""} ${
-          item.trainee.identificationDetails?.panNumber ?? ""
-        } ${item.trainee.identificationDetails?.voterIdNumber ?? ""}`,
-        `${item.trainee.identificationDetails?.mobileNumber ?? ""} ${
+        `Mob: ${
+          item.trainee.identificationDetails?.mobileNumber ?? ""
+        } Guardian Contact : ${
           item.trainee.identificationDetails?.guardianContactNumber ?? ""
-        } ${item.trainee.identificationDetails?.emailId ?? ""}`,
+        } Email : ${item.trainee.identificationDetails?.emailId ?? ""}`,
         item.trainee.dateOfBirth,
         item.trainee.gender,
         item.trainee.traineeAnnualIncome,
@@ -335,6 +340,7 @@ const Reports = () => {
       head: [
         [
           "#",
+          "Name",
           "Education",
           "Disability Details",
           "Identification Details",
@@ -632,46 +638,42 @@ const Reports = () => {
                               >
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" ID TYPE : "}
-                                  {
-                                    item.trainee.identificationDetails
-                                      .typeOfIdentification
-                                  }
+                                  {item.trainee.identificationDetails
+                                    ?.typeOfIdentification ?? ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" AADHAR : "}
-                                  {
-                                    item.trainee.identificationDetails
-                                      .aadharNumber
-                                  }
+                                  {item.trainee.identificationDetails
+                                    ?.aadharNumber ?? ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" PAN : "}
-                                  {item.trainee.identificationDetails.panNumber}
+                                  {item.trainee.identificationDetails
+                                    ?.panNumber ?? ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" Voter ID : "}
-                                  {
-                                    item.trainee.identificationDetails
-                                      .voterIdNumber
-                                  }
+                                  {item.trainee.identificationDetails
+                                    ?.voterIdNumber ?? ""}
                                 </div>
                               </CTableDataCell>
                               <CTableDataCell>
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" Address : "}
-                                  {
-                                    item.trainee.identificationDetails
-                                      .traineeAddress
-                                  }
+                                  {item.trainee.identificationDetails
+                                    ?.traineeAddress ?? ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
-                                  {item.trainee.identificationDetails.district}
+                                  {item.trainee.identificationDetails
+                                    ?.district ?? ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
-                                  {item.trainee.identificationDetails.state}
+                                  {item.trainee.identificationDetails?.state ??
+                                    ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
-                                  {item.trainee.identificationDetails.pincode}
+                                  {item.trainee.identificationDetails
+                                    ?.pincode ?? ""}
                                 </div>
                               </CTableDataCell>
                               <CTableDataCell
@@ -680,28 +682,23 @@ const Reports = () => {
                               >
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" MOB : "}
-                                  {
-                                    item.trainee.identificationDetails
-                                      .mobileNumber
-                                  }
+                                  {item.trainee.identificationDetails
+                                    ?.mobileNumber ?? ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" ALT MOB : "}
-                                  {
-                                    item.trainee.identificationDetails
-                                      .alternateContactNumber
-                                  }
+                                  {item.trainee.identificationDetails
+                                    ?.alternateContactNumber ?? ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" EMAIL : "}
-                                  {item.trainee.identificationDetails.emailId}
+                                  {item.trainee.identificationDetails
+                                    ?.emailId ?? ""}
                                 </div>
                                 <div className="small text-nowrap text-medium-emphasis">
                                   {" GUARDIAN MOB : "}
-                                  {
-                                    item.trainee.identificationDetails
-                                      .guardianContactNumber
-                                  }
+                                  {item.trainee.identificationDetails
+                                    ?.guardianContactNumber ?? ""}
                                 </div>
                               </CTableDataCell>
                               {/* <CTableDataCell
